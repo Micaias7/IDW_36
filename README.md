@@ -1,5 +1,4 @@
-# IDW_numero_de_grupo
+# IDW_36
 
 Hola equipo!
-
-Hola!! 
+listo para trabajar saliendo desde Rama Principal
