@@ -1,5 +1,2 @@
-# IDW_numero_de_grupo
+# IDW_36
 
-Hola equipo!
-
-Integrantes:
