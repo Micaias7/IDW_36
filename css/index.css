@@ -1,0 +1,118 @@
+:root {
+    /* Colores */
+    --color-primario: #496977;
+    --color-secundario: #493222 ;
+    --color-secundario-claro: #ac6532;
+    --color-fondo: #ffffff;
+    --color-base: #ced6da;
+    --color-texto-oscuro: black;
+    --color-texto-claro: white;
+
+    /* Tipografía */
+    --fuente-encabezados: "Poppins", sans-serif;
+    --fuente-cuerpo: "Inter", sans-serif;
+    --weight-bold: 700;
+    --weight-medium: 500;
+    --weight-regular: 400;
+}
+
+body {
+    font-family: var(--fuente-cuerpo);
+    background: var(--color-fondo);
+    margin: 0;
+}
+
+header {
+    background-color: var(--color-base);
+    padding: 20px 0 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header h1 {
+    font-family: var(--fuente-encabezados);
+    font-weight: var(--weight-medium);
+    color: var(--color-primario);
+    font-size: 3em;
+}
+
+nav ul {
+    list-style: none;
+    font-family: var(--fuente-encabezados);
+    padding: 0;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+nav ul li a {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: var(--weight-regular);
+    transition: text-decoration 0.5s, color 0.5s;
+}
+
+nav ul a:hover{
+    color: var(--color-secundario-claro);
+}
+
+main {
+    padding: 200px 20px;
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.obrasSociales h2,
+.catalogo h2 {
+    font-family: var(--fuente-encabezados);
+    font-weight: var(--weight-bold);
+    color: var(--color-secundario-claro);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.imagenObrasSociales {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.medicos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.tarjetaMedico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    text-align: center;
+    background: var(--color-base);
+    border: 3px solid var(--color-primario);
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.319);
+    padding: 15px;
+    width: 200px;
+}
+
+.tarjetaMedico h3 {
+    font-family: var(--fuente-encabezados);
+    font-weight: var(--weight-medium);
+    color: var(--color-primario);
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.imagenDoctor {
+    margin: auto;
+    width: 80px;
+    height: auto;
+}
