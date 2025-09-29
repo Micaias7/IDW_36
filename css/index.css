@@ -23,8 +23,25 @@ body {
     background: var(--color-fondo);
     background-image: url("../public/fondo.png");
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
     margin: 0;
     position: relative;
+
+}
+
+@media(max-width:768px){
+    body{
+        font-size: 16px;
+        /* background-attachment: scroll; */
+    }
+}
+
+@media(max-width:480px){
+    body{
+        font-size: 14px;
+        /* background-attachment: scroll; */
+    }
 }
 
 header {
@@ -58,6 +75,20 @@ nav ul li a {
     font-size: 1.2em;
 }
 
+/* @media (max-width: 991px) {
+
+.navbar-collapse .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px ;
+}
+
+.navbar-collapse .nav-link {
+    font-size: 14px;
+    padding: 0 20px ; 
+}
+} */
+
 nav ul a:hover {
     color: var(--color-secundario-claro);
 }
@@ -87,9 +118,12 @@ section {
 section h2 {
     text-align: center;
     margin: 0 0 20px 0;
-    font-weight: 700;
-    font-size: 1.6rem;
-    color: var(--color-primario);
+    font-family: var(--fuente-encabezados);
+    font-weight: var(--weight-bold);
+    color: var(--color-secundario);
+    font-size: 1.8em;
+    display: flex;
+    justify-content: center;
 }
 
 section ul {
@@ -112,16 +146,6 @@ section ul {
 span {
     text-decoration: underline;
     color: rgb(10, 51, 10);
-}
-
-.obrasSociales h2,
-.catalogo h2 {
-    font-family: var(--fuente-encabezados);
-    font-weight: var(--weight-bold);
-    color: var(--color-secundario);
-    font-size: 1.8em;
-    display: flex;
-    justify-content: center;
 }
 
 .imagenObrasSociales {
