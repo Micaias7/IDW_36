@@ -1,8 +1,8 @@
 :root {
     /* Colores */
     --color-primario: #202020;
-    --color-secundario: #363636;
-    --color-secundario-claro: #37dec2;
+    --color-secundario: #363636 ;
+    --color-secundario-claro: #1f9a86;
     --color-fondo: #ffffff;
     --color-base: #ced6da;
     --color-texto-oscuro: black;
@@ -177,7 +177,7 @@ section ul {
     box-sizing: border-box;
     text-align: center;
     background: transparent;
-    border: 3px solid var(--color-primario);
+    border: 3px solid var(--color-secundario-claro);
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.319);
     padding: 13px;
