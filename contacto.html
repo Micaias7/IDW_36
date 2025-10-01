@@ -1,67 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Centro Medico IDW S.A</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-</head>
+        <title>Contacto - Centro Medico IDW S.A</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
 
-<body>
-    <header>
-        <img src="public/loguito.png" alt="Logo Centro Médico IDW" class="logo" width="300">
-        <nav> 
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li>|</li>
-                <li><a href="informacion.html">Información Institucional</a></li>
-                <li>|</li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>        
-    </header>
+    <body class="m-0">
+        <header class="py-2 text-center">        
+            <nav class="navbar navbar-expand-md">
+                <div class="container-fluid">
+                    <img src="public/loguito.png" alt="Logo" class="img-fluid" style="max-width:300px;">
+                    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-    <main>
-        <section>
-            <h2>Contacto</h2>
-            <p>Podés comunicarte con el Centro Médico a través de los siguientes medios:</p>
-    
-            <h3>Teléfono</h3>
-            <p>(011) 4444-5555</p>
-    
-            <h3>Email</h3>
-            <p>contacto@idwsa.com</p>
-    
-            <h3>Dirección</h3>
-            <p>Avenida Corrientes 2301, Ciudad de Buenos Aires</p>
-    
-            <h3>Horarios de Atención</h3>
-            <p>Lunes a Viernes de 8:00 a 18:00 hs</p>
-            <p>Sábados de 8:00 a 13:00 hs</p>
-        </section>
+                    <div class="collapse navbar-collapse m-2" id="navbarToggler">
+                        <ul class="navbar-nav mx-auto gap-2">
+                            <li class="nav-item">
+                                <a class="nav-link active fs-6" href="index.html">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-6" href="informacion.html">Información Institucional</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fs-6" href="contacto.html">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-        <section>
-            <h3>Nuestras redes</h3>
-            <a href="https://instagram.com" target="_blank">
-                <img src="public/instagram.png" alt="Instagram" width="30"> 
-            </a>
-            <a href="https://facebook.com" target="_blank">
-                <img src="public/facebook.png" alt="Facebook" width="30"> 
-            </a>
-            <a href="https://twitter.com" target="_blank"> 
-                <img src="public/twitter.png" alt="Twitter" width="30"> 
-            </a>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 IDW grupo 36</p>
-    </footer>
+        <main>
+            <section>
+                <h2>Contacto</h2>
+                <p>Podés comunicarte con el Centro Médico a través de los siguientes medios:</p>
+        
+                <h3>Teléfono</h3>
+                <p>(011) 4444-5555</p>
+        
+                <h3>Email</h3>
+                <p>contacto@idwsa.com</p>
+        
+                <h3>Dirección</h3>
+                <p>Avenida Corrientes 2301, Ciudad de Buenos Aires</p>
+        
+                <h3>Horarios de Atención</h3>
+                <p>Lunes a Viernes de 8:00 a 18:00 hs</p>
+                <p>Sábados de 8:00 a 13:00 hs</p>
+            </section>
 
-</body>
-
+            <section>
+                <h3>Nuestras redes</h3>
+                <a href="https://instagram.com" target="_blank">
+                    <img src="public/instagram.png" alt="Instagram" width="30"> 
+                </a>
+                <a href="https://facebook.com" target="_blank">
+                    <img src="public/facebook.png" alt="Facebook" width="30"> 
+                </a>
+                <a href="https://twitter.com" target="_blank"> 
+                    <img src="public/twitter.png" alt="Twitter" width="30"> 
+                </a>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 IDW grupo 36</p>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    </body>
 </html>
