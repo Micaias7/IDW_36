@@ -64,6 +64,7 @@ nav ul {
     margin: 5px 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 25px;
 }
 
@@ -73,6 +74,17 @@ nav ul li a {
     font-weight: var(--weight-regular);
     transition: text-decoration 0.5s, color 0.5s;
     font-size: 1.2em;
+}
+
+.navbar .nav-link {
+  color: var(--color-secundario);
+  font-size: 1.2em;
+  font-weight: var(--weight-regular);
+  transition: color 0.5s;
+}
+
+.navbar .nav-link:hover {
+  color: var(--color-secundario-claro);
 }
 
 /* @media (max-width: 991px) {
