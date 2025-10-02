@@ -1,80 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - IDW grupo 36</title>
 
-        <title>Contacto - Centro Medico IDW S.A</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/index.css">
-    </head>
+  <!-- Cargo el Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-    <body class="m-0">
-        <header class="py-2 text-center">        
-            <nav class="navbar navbar-expand-md">
-                <div class="container-fluid">
-                    <img src="public/loguito.png" alt="Logo" class="img-fluid" style="max-width:300px;">
-                    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+  <!-- Traigo la fuente Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-                    <div class="collapse navbar-collapse m-2" id="navbarToggler">
-                        <ul class="navbar-nav mx-auto gap-2">
-                            <li class="nav-item">
-                                <a class="nav-link active fs-6" href="index.html">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link fs-6" href="informacion.html">Información Institucional</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link fs-6" href="contacto.html">Contacto</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+  <!--Linkea el css -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="m-0">
 
-        <main>
-            <section>
-                <h2>Contacto</h2>
-                <p>Podés comunicarte con el Centro Médico a través de los siguientes medios:</p>
-        
-                <h3>Teléfono</h3>
-                <p>(011) 4444-5555</p>
-        
-                <h3>Email</h3>
-                <p>contacto@idwsa.com</p>
-        
-                <h3>Dirección</h3>
-                <p>Avenida Corrientes 2301, Ciudad de Buenos Aires</p>
-        
-                <h3>Horarios de Atención</h3>
-                <p>Lunes a Viernes de 8:00 a 18:00 hs</p>
-                <p>Sábados de 8:00 a 13:00 hs</p>
-            </section>
+  <!-- centramos el header -->
+  <header class="py-2 text-center">        
+    <nav class="navbar navbar-expand-md">
+      <div class="container-fluid">
+        <img src="public/loguito.png" alt="Logo" class="img-fluid" style="max-width:300px;">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse m-2" id="navbarToggler">
+          <ul class="navbar-nav mx-auto gap-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="informacion.html">Información Institucional</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-            <section>
-                <h3>Nuestras redes</h3>
-                <a href="https://instagram.com" target="_blank">
-                    <img src="public/instagram.png" alt="Instagram" width="30"> 
-                </a>
-                <a href="https://facebook.com" target="_blank">
-                    <img src="public/facebook.png" alt="Facebook" width="30"> 
-                </a>
-                <a href="https://twitter.com" target="_blank"> 
-                    <img src="public/twitter.png" alt="Twitter" width="30"> 
-                </a>
-            </section>
-        </main>
-        
-        <footer class="d-flex justify-content-center fw-bold py-3">
-            <p>&copy; 2025 IDW grupo 36</p>
-        </footer>
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    </body>
+  <!-- El Main -->
+  <main class="container">
+
+    <!-- La sección Contacto -->
+    <section class="my-5 p-4 rounded-3">
+      <h2 class="text-center mb-4">Contacto</h2>
+      <div class="row g-4">
+
+        <div class="col-12 col-md-6">
+          <div class="card h-100 text-center shadow-sm p-3">
+            <h5 class="card-title">Teléfono</h5>
+            <p class="card-text">(011) 4444-5555</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="card h-100 text-center shadow-sm p-3">
+            <h5 class="card-title">Email</h5>
+            <p class="card-text">contacto@idwsa.com</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="card h-100 text-center shadow-sm p-3">
+            <h5 class="card-title">Dirección</h5>
+            <p class="card-text">Avenida Corrientes 2301, Ciudad de Buenos Aires</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="card h-100 text-center shadow-sm p-3">
+            <h5 class="card-title">Horarios de Atención</h5>
+            <p>Lunes a Viernes de 8:00 a 18:00 hs</p>
+            <p>Sábados de 8:00 a 13:00 hs</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!--las redes sociales -->
+    <section class="my-5 text-center">
+      <h3>Nuestras redes</h3>
+      <div class="d-flex justify-content-center gap-4 mt-3">
+        <a href="https://instagram.com" target="_blank"><img src="public/instagram.png" alt="Instagram" width="30"></a>
+        <a href="https://facebook.com" target="_blank"><img src="public/facebook.png" alt="Facebook" width="30"></a>
+        <a href="https://twitter.com" target="_blank"><img src="public/twitter.png" alt="Twitter" width="30"></a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- El footer -->
+  <footer class="d-flex justify-content-center fw-bold py-3">
+    <p>&copy; 2025 IDW grupo 36</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
 </html>
