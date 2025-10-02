@@ -104,27 +104,27 @@ section h2 {
     color: var(--color-secundario);
 }
 
-section ul {
+/* section ul {
     list-style: none;
     padding-left: 1.25rem;
     margin: 0 0 12px 0;
     line-height: 1.6;
     color: #333;
-}
+} */
 
-.div_historia, .servicios {
+/* .div_historia, .servicios {
     text-align: left;
     text-indent: 1rem;
-}
+} */
 
-.div_valores {
+/* .div_valores {
     text-align: left;
-}
+} */
 
-span {
+/* span {
     text-decoration: underline;
     color: rgb(10, 51, 10);
-}
+} */
 
 .imagenObrasSociales {
     max-width: 100%;
@@ -186,10 +186,9 @@ footer {
 } */
 
 @media(max-width:768px){
-    body{
+    /* body{
         font-size: 14px;
-        /* background-attachment: scroll; */
-    }
+    } */
 
     /* .navbar-nav {
         flex-direction: column;
@@ -207,9 +206,9 @@ footer {
         height: 6rem;
     }
 
-    .img-fluid{
+    /* .img-fluid{
         width: 240px;
-    }
+    } */
 
     .nav-item {
         height: 1.5rem;
