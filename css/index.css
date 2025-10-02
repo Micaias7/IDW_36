@@ -25,56 +25,15 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    /* margin: 0; */
-
 }
 
 header {
     background: linear-gradient(360deg, rgb(100 147 190) 10%, rgb(189 225 243) 35%);
-    /* padding: 10px 0 10px 0;
-    text-align: center; */
 }
-
-/* header h1 {
-    font-family: var(--fuente-encabezados);
-    font-weight: var(--weight-medium);
-    color: var(--color-primario);
-    font-size: 30rem;
-} */
-
-/* nav ul {
-    list-style: none;
-    font-family: var(--fuente-encabezados);
-    padding: 0;
-    margin: 5px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-} */
-
-/* nav ul li a {
-    color: var(--color-secundario);
-    text-decoration: none;
-    font-weight: var(--weight-regular);
-    transition: text-decoration 0.5s, color 0.5s;
-    font-size: 1.2em;
-} */
-
-/* .navbar .nav-link {
-  color: var(--color-secundario);
-  font-size: 1.2em;
-  font-weight: var(--weight-regular);
-  transition: color 0.5s;
-} */
 
 .navbar .nav-link:hover {
   color: var(--color-secundario-claro);
 }
-
-/* nav ul a:hover {
-    color: var(--color-secundario-claro);
-} */
 
 p, li, a {
     font-family: var(--fuente-cuerpo);
@@ -83,19 +42,9 @@ p, li, a {
     line-height: 1.5;
 }
 
-/* main {
-    padding: 10px 20px;
-    max-width: 950px;
-    margin: 0px auto;
-} */
-
 section {
-    /* margin: 20px 0; */
     background-color: var(--color-fondo);
     opacity: 90%;
-    /* border-radius: 1.5rem;
-    padding: 20px 30px;
-    text-align: center; */
 }
 
 section h2 {
@@ -104,55 +53,11 @@ section h2 {
     color: var(--color-secundario);
 }
 
-/* section ul {
-    list-style: none;
-    padding-left: 1.25rem;
-    margin: 0 0 12px 0;
-    line-height: 1.6;
-    color: #333;
-} */
-
-/* .div_historia, .servicios {
-    text-align: left;
-    text-indent: 1rem;
-} */
-
-/* .div_valores {
-    text-align: left;
-} */
-
-/* span {
-    text-decoration: underline;
-    color: rgb(10, 51, 10);
-} */
-
 .imagenObrasSociales {
     max-width: 100%;
     opacity: 90%;
     border-radius: 1.5rem;
 }
-
-/* .medicos {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-} */
-
-/* .tarjetaMedico {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    text-align: center;
-    background: transparent;
-    border: 3px solid var(--color-secundario-claro);
-    border-radius: 15px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.319);
-    padding: 13px;
-    width: 270px;
-} */
 
 section h3 {
     font-family: var(--fuente-encabezados);
@@ -162,15 +67,7 @@ section h3 {
     font-size: 1em;
 }
 
-/* .imagenDoctor {
-    margin: auto;
-    width: 80px;
-    height: auto;
-} */
-
 footer {
-    /* display: flex;
-    justify-content: center; */
     font-weight: var(--weight-bold);
 }
 
@@ -178,23 +75,7 @@ footer {
     flex-direction: column;
 }
 
-/* .navbar-collapse-gradient .navbar-nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 0;
-} */
-
 @media(max-width:768px){
-    /* body{
-        font-size: 14px;
-    } */
-
-    /* .navbar-nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-    } */
 
     .navbar-collapse-gradient {
         background: linear-gradient(360deg, rgb(189 225 243) 10%, rgb(100 147 190) 100%);
@@ -206,18 +87,7 @@ footer {
         height: 6rem;
     }
 
-    /* .img-fluid{
-        width: 240px;
-    } */
-
     .nav-item {
         height: 1.5rem;
     }
-
-}
-
-@media(max-width:480px){
-    /* body h2{
-        font-size: 1.2rem;
-    } */
 }
