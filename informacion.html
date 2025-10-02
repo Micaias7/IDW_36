@@ -1,65 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Informacion Institucional IDW S.A</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
-</head>
+  </head>
 
-<body>
-    <header>
-        <img src="public/loguito.png" alt="Logo Centro Médico IDW" class="logo" width="300">
-        <nav> 
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li>|</li>
-                <li><a href="informacion.html">Información Institucional</a></li>
-                <li>|</li>
-                <li><a href="contacto.html">Contacto</a></li>
+  <body class="m-0">
+    <header class="py-2 text-center">        
+      <nav class="navbar navbar-expand-md">
+        <div class="container-fluid">
+          <img src="public/loguito.png" alt="Logo" class="img-fluid" style="max-width:300px;">
+          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse m-2" id="navbarToggler">
+            <ul class="navbar-nav mx-auto gap-2">
+              <li class="nav-item">
+                <a class="nav-link active fs-6" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6" href="informacion.html">Información Institucional</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6" href="contacto.html">Contacto</a>
+              </li>
             </ul>
-        </nav>        
+            </div>
+        </div>
+      </nav>
     </header>
 
-    <main>
-        <section>
-            <h2> Nuestra Historia </h2>
-            <div class="div_historia">
-                <p> El <strong>Instituto Médico IDW S.A</strong> inició sus actividades en 1985 como un centro de salud de pequeña escala,
-                     con el objetivo de brindar atención médica integral a la comunidad. Con el paso de los años, fue incorporando nuevas especialidades,
-                      áreas de internación y tecnología de avanzada, lo que le permitió consolidarse como una institución de referencia en la región.
-                </p>
+    <main class="container">
+      <section>
+        <div class="container">    
+          <div class="card mb-4 shadow-sm mx-auto" style="max-width: 800px;">
+            <img src="public/nuestrahistoria.jpg" class="card-img-top img-fluid"  alt="equipo medico" style="max-height: 300px; object-fit: cover;">
+            <div class="card-body text-center">        
+              <h2 class="card-title">Nuestra Historia</h2>
+              <p class="card-text">El Instituto Médico IDW S.A inició sus actividades en 1985 como un centro de salud de pequeña escala,
+                con el objetivo de brindar atención médica integral a la comunidad. Con el paso de los años, fue incorporando nuevas especialidades,
+                áreas de internación y tecnología de avanzada, lo que le permitió consolidarse como una institución de referencia en la región.</p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section>
-            <h2>Nuestros Valores</h2>
-            <div class="div_valores">
-                <ul>
-                    <li><span>Compromiso con el paciente:</span> cada persona es el centro de nuestra atención, priorizando siempre su bienestar y seguridad.</li>
-                    <li><span>Calidez humana:</span> brindamos un trato cercano, respetuoso y empático en cada consulta y procedimiento.</li>
-                    <li><span>Excelencia profesional:</span> contamos con un equipo altamente capacitado y en constante actualización.</li>
-                    <li><span>Excelencia profesional:</span> contamos con un equipo altamente capacitado y en constante actualización.</li>
-                    <li><span>Responsabilidad social:</span> trabajamos con conciencia comunitaria, promoviendo la prevención y el acceso equitativo a la salud.</li>
-                </ul>
-            </div>
-        </section>
+      <section>
+        <div class="container">      
+          <div class="card mb-4 shadow-sm mx-auto" style="max-width: 800px;">
+            <img src="public/nuestrosvalores.jpg" class="card-img-top img-fluid"alt="equipo medico" style="max-height: 300px; object-fit: cover;">           
+            <div class="card-body">
+              <h2 class="card-title text-center mb-4">Nuestros Valores</h2>      
+              <div class="row g-3 justify-content-center">
 
-        <section>
-            <h2> Infraestructura y Servicios</h2>
-            <div>
-                <P class="servicios"> Contamos con modernas instalaciones diseñadas para brindar comodidad y seguridad a nuestros pacientes.
-                    Nuestro edificio dispone de consultorios totalmente equipados, salas de internación confortables, 
-                    quirófanos con tecnología de última generación y un servicio de diagnóstico por imágenes de alta precisión. </P>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card h-100 text-center">
+                    <div class="card-body">
+                      <h5 class="card-title">Compromiso con el paciente</h5>
+                      <p class="card-text">Cada persona es el centro de nuestra atención, priorizando siempre su bienestar y seguridad.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card h-100 text-center">
+                    <div class="card-body">
+                      <h5 class="card-title">Calidez humana</h5>
+                      <p class="card-text">Brindamos un trato cercano, respetuoso y empático en cada consulta y procedimiento.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card h-100 text-center">
+                    <div class="card-body">
+                      <h5 class="card-title">Excelencia profesional</h5>
+                      <p class="card-text">Contamos con un equipo altamente capacitado y en constante actualización.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card h-100 text-center">
+                    <div class="card-body">
+                      <h5 class="card-title">Responsabilidad social</h5>
+                      <p class="card-text">Trabajamos con conciencia comunitaria, promoviendo la prevención y el acceso equitativo a la salud.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div> 
+            </div> 
+          </div>
+        </div> 
+      </section>
+
+      <section>          
+        <div class="container">          
+          <div class="card mb-4 shadow-sm mx-auto" style="max-width: 800px;">
+            <img src="public/infraestructura.jpg" class="card-img-top img-fluid" alt="equipo medico" style="max-height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h2 class="card-title">Infraestructura y Servivios </h2>
+              <p class="card-text">Contamos con modernas instalaciones diseñadas para brindar comodidad y seguridad a nuestros pacientes.
+                  Nuestro edificio dispone de consultorios totalmente equipados . Salas de internacion confortables .Quirofanos con tecnologia de ultima generacion y un servivio de diagnostico por imagenes de alta precision.
+              </p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer>
-        <p> &copy; 2025 IDW grupo 36</p>
+    <footer class="d-flex justify-content-center fw-bold py-3">
+      <p>&copy; 2025 IDW grupo 36</p>
     </footer>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
 </html>
