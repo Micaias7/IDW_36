@@ -67,6 +67,11 @@ section h3 {
     font-size: 1em;
 }
 
+.doc {
+  height: 270px;
+  object-fit: cover;
+}
+
 footer {
     font-weight: var(--weight-bold);
 }
