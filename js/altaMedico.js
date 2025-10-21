@@ -18,6 +18,12 @@ function altaMedicos(event) {
         return;
     }
 
+    const nuevoMedico = { nombre, apellido, especialidad, genero, imagenFinal };
+
+    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+    medicos.push(nuevoMedico);
+    localStorage.setItem("medicos", JSON.stringify(medicos));
+    
     alert(
         `Médico registrado con exito !\n\n` +
         `Nombre: ${nombre}\n` +
@@ -27,15 +33,15 @@ function altaMedicos(event) {
         `Imagen: ${imagenFinal}`
     );
 
-      resultado.innerHTML = `
-    <div class="card mx-auto shadow-sm" style="max-width: 400px;">
-      <img src="${imagenFinal}" class="card-img-top" alt="public/doctor.png">
-      <div class="card-body text-center">
-        <h5 class="card-title">${genero} ${nombre} ${apellido}</h5>
-        <p class="card-text">${especialidad}</p>
-      </div>
-    </div>
-  `;
+  //     resultado.innerHTML = `
+  //   <div class="card mx-auto shadow-sm" style="max-width: 400px;">
+  //     <img src="${imagenFinal}" class="card-img-top" alt="public/doctor.png">
+  //     <div class="card-body text-center">
+  //       <h5 class="card-title">${genero} ${nombre} ${apellido}</h5>
+  //       <p class="card-text">${especialidad}</p>
+  //     </div>
+  //   </div>
+  // `;
 
     formAltaMedico.reset();
 }
