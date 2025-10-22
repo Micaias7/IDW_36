@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     const navLogin = document.getElementById("navLogin");
     const navLogout = document.getElementById("navLogout");
+    const linkAlta = document.getElementById("linkAltaMedicos");
 
     const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
 
     if (usuarioLogueado) {
         // Mostrar Logout y ocultar Login
         navLogout.style.display = "block";
-        navLogout.querySelector("a").textContent = `Logout`;
+        navLogout.querySelector("a").textContent = `Cerrar Sesion`;
         navLogin.style.display = "none";
 
         // Evento de logout
