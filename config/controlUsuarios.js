@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const navLogin = document.getElementById("navLogin");
     const navLogout = document.getElementById("navLogout");
+    const linkAltaMedicos = document.getElementById("linkAltaMedicos");
 
     const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
 
@@ -19,12 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Mostrar Alta de Médicos solo si es admin
         if (usuarioLogueado === "admin") {
-            linkAlta.style.display = "block";
+            linkAltaMedicos.style.display = "block";
         }
     } else {
         // Mostrar Login
         navLogin.style.display = "block";
         navLogout.style.display = "none";
-        linkAlta.style.display = "none";
+        linkAltaMedicos.style.display = "none";
     }
 });
