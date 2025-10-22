@@ -80,6 +80,10 @@ footer {
     flex-direction: column;
 }
 
+#navLogin, #navLogout, #linkAltaMedicos {
+    display: none;
+}
+
 @media(max-width:768px){
 
     .navbar-collapse-gradient {
