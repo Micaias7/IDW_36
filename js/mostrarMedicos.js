@@ -5,6 +5,7 @@ inicializarLocalStorage();
 // Mostrar médicos en versión escritorio
 export const mostrarMedicosEnIndex = () => {
     const contenedor = document.getElementById("medicosEscritorio");
+    if (!contenedor) return;
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
     contenedor.innerHTML = ""; 
 
@@ -24,6 +25,7 @@ export const mostrarMedicosEnIndex = () => {
 export const actualizarCarruselMovil = () => {
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
     const carouselInner = document.getElementById("medicosCarouseCards");
+    if (!carouselInner) return;
     carouselInner.innerHTML = "";
 
     medicos.forEach((m, index) => {
@@ -42,8 +44,28 @@ export const actualizarCarruselMovil = () => {
     });
 };
 
+// Mostrar médicos en la página de alta de médicos
+export const mostrarMedicosEnAlta = () => {
+    const tbody = document.getElementById("listaDeMedicos");
+    if (!tbody) return;
+    tbody.innerHTML = "";
+    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+    medicos.forEach((m, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <th scope="row">${index + 1}</th>
+            <td>${m.nombre} ${m.apellido}</td>
+            <td>${m.especialidad}</td>
+            <td><i class="bi bi-pencil-square" title="Editar"></i> | <i class="bi bi-person-x" title="Borrar"></i></td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+}
+
 // Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     mostrarMedicosEnIndex();
     actualizarCarruselMovil();
+    mostrarMedicosEnAlta()
 });

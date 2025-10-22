@@ -1,3 +1,5 @@
+import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
+
 const formAltaMedico = document.getElementById("altaMedicoForm");
 const inputNombre = document.getElementById("nombre");
 const inputApellido = document.getElementById("apellido");
@@ -23,6 +25,8 @@ function altaMedicos(event) {
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
     medicos.push(nuevoMedico);
     localStorage.setItem("medicos", JSON.stringify(medicos));
+
+    mostrarMedicosEnAlta();
     
     alert(
         `Médico registrado con exito !\n\n` +
