@@ -1,43 +1,51 @@
-import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
+import { inicializarLocalStorage } from "../config/inicializarLocalStorage.js";
+import { mostrarMedicosEnAlta, mostrarMedicosEnIndex, actualizarCarruselMovil } from "./mostrarMedicos.js"
 
-const formAltaMedico = document.getElementById("altaMedicoForm");
-const inputNombre = document.getElementById("nombre");
-const inputApellido = document.getElementById("apellido");
-const inputEspecialidad = document.getElementById("especialidad");
-const inputImagen = document.getElementById("imagen");
+inicializarLocalStorage();
 
-function altaMedicos(event) {
-    event.preventDefault();
+const formAlta = document.getElementById("altaMedicoForm");
+if(formAlta) {
+    formAlta.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    const nombre = inputNombre.value.trim();
-    const apellido = inputApellido.value.trim();
-    const especialidad = inputEspecialidad.value.trim();
-    const genero = document.querySelector("input[name='genero']:checked")?.value || "";
-    const imagenFinal = inputImagen.value.trim() || "public/doctor.png";
+        if (formAlta.dataset.editIndex !== undefined) {
+            // Si hay un índice de edición, delegar a la función de edición
+            return;
+        }
 
-    if (!nombre || !apellido || !especialidad || !genero || !imagenFinal) {
-        alert("Por favor completa los campos requeridos");
-        return;
-    }
+        const nombre = document.getElementById("nombre").value.trim();
+        const apellido = document.getElementById("apellido").value.trim();
+        const especialidad = document.getElementById("especialidad").value.trim();
+        const genero = document.querySelector('input[name="genero"]:checked')?.value || "";
+        const imagen = document.getElementById("imagen").value || "../public/doctor.png";
 
-    const nuevoMedico = { nombre, apellido, especialidad, genero, imagenFinal };
+        const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
 
-    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
-    medicos.push(nuevoMedico);
-    localStorage.setItem("medicos", JSON.stringify(medicos));
+        medicos.push({
+            nombre,
+            apellido,
+            especialidad,
+            genero,
+            imagenFinal: imagen
+        });
 
-    mostrarMedicosEnAlta();
-    
-    alert(
-        `Médico registrado con exito !\n\n` +
-        `Nombre: ${nombre}\n` +
-        `Apellido: ${apellido}\n` +
-        `Especialidad: ${especialidad}\n` +
-        `Dr/a: ${genero}\n` +
-        `Imagen: ${imagenFinal}`
-    );
+        localStorage.setItem("medicos", JSON.stringify(medicos));
 
-    formAltaMedico.reset();
+        // === NUEVO: Pop-up de registro exitoso ===
+        alert("Registro exitoso");
+
+        formAlta.reset();
+
+        mostrarMedicosEnAlta();
+        mostrarMedicosEnIndex();
+        actualizarCarruselMovil();
+    });
 }
 
-formAltaMedico.addEventListener("submit", altaMedicos);
+// Ejecutar al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    mostrarMedicosEnIndex();
+    actualizarCarruselMovil();
+    mostrarMedicosEnAlta();
+});
+
