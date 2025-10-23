@@ -1,0 +1,33 @@
+<section class="my-5 p-4 rounded-3 text-center">
+  <h2 class="text-center mb-4">Alta de Especialidades</h2>
+
+  <form id="altaEspecialidadForm" class="border rounded p-4 bg-light shadow-sm mx-auto text-start">
+    <div class="mb-3 row align-items-center">
+      <label for="nombreEspecialidad" class="col-sm-3 col-form-label text-sm-end">Nombre de la especialidad:</label>
+      <div class="col-sm-9">
+        <input type="text" id="nombreEspecialidad" name="nombreEspecialidad" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary px-5">Registrar Especialidad</button>
+    </div>
+  </form>
+</section>
+
+<section class="my-5 p-4 rounded-3 text-center">
+  <div class="container">
+    <table class="table table-hover table-sm caption-top">
+      <caption>Lista de Especialidades</caption>
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col">EDITAR | BORRAR</th>
+        </tr>
+      </thead>
+      <tbody id="listaDeEspecialidades">
+      </tbody>
+    </table>
+  </div>
+</section>
