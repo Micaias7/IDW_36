@@ -5,27 +5,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
 
-    if (usuarioLogueado) {
-        // Mostrar Logout y ocultar Login
-        navLogout.style.display = "block";
-        navLogout.querySelector("a").textContent = `Cerrar Sesion`;
-        navLogin.style.display = "none";
-
-        // Evento de logout
-        navLogout.querySelector("a").addEventListener("click", e => {
-            e.preventDefault();
-            sessionStorage.removeItem("usuarioLogueado");
-            location.reload();
-        });
-
-        // Mostrar Alta de Médicos solo si es admin
-        if (usuarioLogueado === "admin") {
-            linkAltaMedicos.style.display = "block";
+// Función para mostrar/ocultar elementos del navbar
+    function actualizarNavbar() {
+        if (usuarioLogueado) {
+            if (navLogout) navLogout.style.display = "block";
+            if (navLogin) navLogin.style.display = "none";
+            if (linkAltaMedicos) linkAltaMedicos.style.display = usuarioLogueado === "admin" ? "block" : "none";
+        } else {
+            if (navLogout) navLogout.style.display = "none";
+            if (navLogin) navLogin.style.display = "block";
+            if (linkAltaMedicos) linkAltaMedicos.style.display = "none";
         }
-    } else {
-        // Mostrar Login
-        navLogin.style.display = "block";
-        navLogout.style.display = "none";
-        linkAltaMedicos.style.display = "none";
     }
+
+    // Listener de logout
+    if (navLogout) {
+        const logoutLink = navLogout.querySelector("a");
+        if (logoutLink) {
+            logoutLink.addEventListener("click", e => {
+                e.preventDefault();
+                sessionStorage.removeItem("usuarioLogueado");
+                window.location.href = "login.html";
+            });
+        }
+    }
+
+    actualizarNavbar();
 });
