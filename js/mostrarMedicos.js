@@ -1,4 +1,6 @@
 import { inicializarLocalStorage } from "../config/inicializarLocalStorage.js";
+import { eliminarMedico } from "./eliminarMedicos.js"
+import { abrirModalEditarMedico } from "./editarMedicos.js"
 
 inicializarLocalStorage();
 
@@ -50,6 +52,7 @@ export const mostrarMedicosEnAlta = () => {
     if (!tbody) return;
     tbody.innerHTML = "";
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+    
     medicos.forEach((m, index) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -75,50 +78,10 @@ export const mostrarMedicosEnAlta = () => {
     tbody.querySelectorAll(".bi-pencil-square").forEach(icon => {
         icon.addEventListener("click", (e) => {
             const index = e.target.getAttribute("data-index");
-            editarMedico(index);
+            abrirModalEditarMedico(index);
         });
     });
 };
-
-//  Función para eliminar médico
-function eliminarMedico(index) {
-    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
-    const confirmar = confirm(`¿Seguro que querés eliminar al Dr/a. ${medicos[index].nombre} ${medicos[index].apellido}?`);
-    if (confirmar) {
-        medicos.splice(index, 1);
-        localStorage.setItem("medicos", JSON.stringify(medicos));
-        mostrarMedicosEnAlta();
-        mostrarMedicosEnIndex();
-        actualizarCarruselMovil();
-    }
-}
-
-//  Función para editar médico
-function editarMedico(index) {
-    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
-    const medico = medicos[index];
-
-    const nuevoNombre = prompt("Editar nombre:", medico.nombre);
-    const nuevoApellido = prompt("Editar apellido:", medico.apellido);
-    const nuevaEspecialidad = prompt("Editar especialidad:", medico.especialidad);
-    const nuevoGenero = prompt("Editar género (Dr./Dra.):", medico.genero);
-    const nuevaImagen = prompt("Editar URL de imagen:", medico.imagenFinal);
-
-    if (nuevoNombre && nuevoApellido && nuevaEspecialidad) {
-        medicos[index] = {
-            ...medico,
-            nombre: nuevoNombre,
-            apellido: nuevoApellido,
-            especialidad: nuevaEspecialidad,
-            genero: nuevoGenero || medico.genero,
-            imagenFinal: nuevaImagen || medico.imagenFinal
-        };
-        localStorage.setItem("medicos", JSON.stringify(medicos));
-        mostrarMedicosEnAlta();
-        mostrarMedicosEnIndex();
-        actualizarCarruselMovil();
-    }
-}
 
 // Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
