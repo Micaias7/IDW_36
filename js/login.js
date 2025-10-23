@@ -23,7 +23,7 @@ formLogin.addEventListener("submit", function(event){
     if(isUsuario){
         sessionStorage.setItem("usuarioLogueado", usuarioInput);
         if(usuarioInput === "admin"){
-            window.location.href = "altaMedicos.html"
+            window.location.href = "panel.html"
         } else {
             window.location.href = "index.html"
         }
