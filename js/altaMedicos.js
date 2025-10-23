@@ -1,28 +1,17 @@
 import { inicializarLocalStorage } from "../config/inicializarLocalStorage.js";
-import { mostrarMedicosEnIndex, mostrarMedicosEnIndex, actualizarCarruselMovil } from "./mostrarMedicos.js"
+import { mostrarMedicosEnAlta, mostrarMedicosEnIndex, actualizarCarruselMovil } from "./mostrarMedicos.js"
 
 inicializarLocalStorage();
-
-    // Eventos de eliminar
-tbody.querySelectorAll(".bi-person-x").forEach(icon => {
-    icon.addEventListener("click", (e) => {
-        const index = e.target.getAttribute("data-index");
-        eliminarMedico(index);
-    });
-});
-
-    // Eventos de editar
-tbody.querySelectorAll(".bi-pencil-square").forEach(icon => {
-    icon.addEventListener("click", (e) => {
-        const index = e.target.getAttribute("data-index");
-        abrirModalEditarMedico(index);
-    });
-});
 
 const formAlta = document.getElementById("altaMedicoForm");
 if(formAlta) {
     formAlta.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        if (formAlta.dataset.editIndex !== undefined) {
+            // Si hay un índice de edición, delegar a la función de edición
+            return;
+        }
 
         const nombre = document.getElementById("nombre").value;
         const apellido = document.getElementById("apellido").value;

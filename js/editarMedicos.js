@@ -35,6 +35,8 @@ export function abrirModalEditarMedico(index) {
     const tituloEdicion = document.getElementById("titulo");
     if(tituloEdicion) tituloEdicion.textContent = "Edición de Médico";
 
+    form.dataset.editIndex = index;
+
     const onSubmitOriginal = form.onsubmit;
 
     form.onsubmit = (e) => {
@@ -54,9 +56,9 @@ export function abrirModalEditarMedico(index) {
         // Solo actualizar URL si es válida
         try {
             new URL(inputImagen.value);
-            medico.imagenFinal = inputImagen.value;
         } catch {
             // Si no es válida, se mantiene la URL anterior
+            medico.imagenFinal = inputImagen.value;
         }
 
         if(inputGenero) {
@@ -75,6 +77,7 @@ export function abrirModalEditarMedico(index) {
 
         // Reset del formulario y botón
         form.reset();
+        delete form.dataset.editIndex;
         if(botonGuardar) botonGuardar.textContent = "Agregar Médico";
         if(tituloEdicion) tituloEdicion.textContent = "Alta de Médico";
 
