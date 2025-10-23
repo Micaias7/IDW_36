@@ -81,7 +81,7 @@ export const mostrarMedicosEnAlta = () => {
     });
 };
 
-//  Función para eliminar médico
+// Función para eliminar médico
 function eliminarMedico(index) {
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
     const confirmar = confirm(`¿Seguro que querés eliminar al Dr/a. ${medicos[index].nombre} ${medicos[index].apellido}?`);
@@ -94,7 +94,7 @@ function eliminarMedico(index) {
     }
 }
 
-//  Función para abrir modal con formulario de alta para editar
+// Función para abrir modal con formulario de alta para editar
 function abrirModalEditarMedico(index) {
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
     const medico = medicos[index];
@@ -105,52 +105,83 @@ function abrirModalEditarMedico(index) {
     const inputApellido = document.getElementById("apellido");
     const inputEspecialidad = document.getElementById("especialidad");
     const inputImagen = document.getElementById("imagen");
-    const inputGenero = document.getElementById("genero"); // si agregaste genero en el form
+    const inputGenero = document.getElementsByName("genero");
 
     // Llenar formulario con los datos existentes
     inputNombre.value = medico.nombre;
     inputApellido.value = medico.apellido;
     inputEspecialidad.value = medico.especialidad;
     inputImagen.value = medico.imagenFinal;
-    if (inputGenero) inputGenero.value = medico.genero;
+    if(inputGenero) {
+        inputGenero.forEach(radio => {
+            if(radio.value === medico.genero) radio.checked = true;
+        });
+    }
 
     // Cambiar el submit del formulario para guardar cambios
     const botonGuardar = document.getElementById("botonGuardarAlta");
-    botonGuardar.textContent = "Guardar Cambios";
+    if(botonGuardar) botonGuardar.textContent = "Guardar Cambios";
 
-    // Guardar función original para resetear después
     const onSubmitOriginal = form.onsubmit;
 
     form.onsubmit = (e) => {
         e.preventDefault();
-        // Guardar los cambios
+
         medico.nombre = inputNombre.value;
         medico.apellido = inputApellido.value;
         medico.especialidad = inputEspecialidad.value;
         medico.imagenFinal = inputImagen.value;
-        if (inputGenero) medico.genero = inputGenero.value;
+        if(inputGenero) medico.genero = Array.from(inputGenero).find(r => r.checked)?.value;
 
-        medicos[index] = medico;
-        localStorage.setItem("medicos", JSON.stringify(medicos));
+        const medicosActualizados = JSON.parse(localStorage.getItem("medicos")) || [];
+        medicosActualizados[index] = medico;
+        localStorage.setItem("medicos", JSON.stringify(medicosActualizados));
 
-        // Actualizar vistas
         mostrarMedicosEnAlta();
         mostrarMedicosEnIndex();
         actualizarCarruselMovil();
 
-        // Reset form
         form.reset();
-        botonGuardar.textContent = "Agregar Médico";
+        if(botonGuardar) botonGuardar.textContent = "Agregar Médico";
         form.onsubmit = onSubmitOriginal;
-
-        // Cerrar modal si estás usando bootstrap
-        const modal = bootstrap.Modal.getInstance(document.getElementById("modalAltaMedico"));
-        if(modal) modal.hide();
     };
+}
 
-    // Abrir modal (Bootstrap)
-    const modalInstance = new bootstrap.Modal(document.getElementById("modalAltaMedico"));
-    modalInstance.show();
+// === NUEVO: Pop-up de registro exitoso ===
+const formAlta = document.getElementById("altaMedicoForm");
+if(formAlta) {
+    formAlta.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const nombre = document.getElementById("nombre").value;
+        const apellido = document.getElementById("apellido").value;
+        const especialidad = document.getElementById("especialidad").value;
+        const genero = document.querySelector('input[name="genero"]:checked')?.value || "";
+        const imagen = document.getElementById("imagen").value;
+
+        const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+
+        medicos.push({
+            nombre,
+            apellido,
+            especialidad,
+            genero,
+            imagenFinal: imagen
+        });
+
+
+
+        localStorage.setItem("medicos", JSON.stringify(medicos));
+
+        // Pop-up tipo confirm/alert como eliminar
+        alert("Registro exitoso");
+
+        formAlta.reset();
+
+        mostrarMedicosEnAlta();
+        mostrarMedicosEnIndex();
+        actualizarCarruselMovil();
+    });
 }
 
 // Ejecutar al cargar la página
@@ -159,3 +190,4 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarCarruselMovil();
     mostrarMedicosEnAlta();
 });
+
