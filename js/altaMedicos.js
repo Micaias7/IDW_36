@@ -13,9 +13,9 @@ if(formAlta) {
             return;
         }
 
-        const nombre = document.getElementById("nombre").value;
-        const apellido = document.getElementById("apellido").value;
-        const especialidad = document.getElementById("especialidad").value;
+        const nombre = document.getElementById("nombre").value.trim();
+        const apellido = document.getElementById("apellido").value.trim();
+        const especialidad = document.getElementById("especialidad").value.trim();
         const genero = document.querySelector('input[name="genero"]:checked')?.value || "";
         const imagen = document.getElementById("imagen").value || "../public/doctor.png";
 

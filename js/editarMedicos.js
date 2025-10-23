@@ -49,16 +49,18 @@ export function abrirModalEditarMedico(index) {
         }
 
         // Actualizar solo los campos válidos
-        medico.nombre = inputNombre.value;
-        medico.apellido = inputApellido.value;
-        medico.especialidad = inputEspecialidad.value;
+        medico.nombre = inputNombre.value.trim();
+        medico.apellido = inputApellido.value.trim();
+        medico.especialidad = inputEspecialidad.value.trim();
 
-        // Solo actualizar URL si es válida
-        try {
-            new URL(inputImagen.value);
-        } catch {
-            // Si no es válida, se mantiene la URL anterior
-            medico.imagenFinal = inputImagen.value;
+       // Validar URL de imagen solo si se ingresó algo
+        if (inputImagen.value.trim() !== "") {
+            try {
+                new URL(inputImagen.value);
+                medico.imagenFinal = inputImagen.value;
+            } catch {
+                alert("URL de imagen no válida. Se mantiene la anterior.");
+            }
         }
 
         if(inputGenero) {
