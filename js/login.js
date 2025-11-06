@@ -24,8 +24,9 @@ formLogin.addEventListener("submit", function(event){
         sessionStorage.setItem("usuarioLogueado", usuarioInput);
         if(usuarioInput === "admin"){
             window.location.href = "altaMedicos.html"
-        } 
-        window.location.href = "index.html"
+        } else {
+            window.location.href = "index.html"
+        }
 
     } else {
         mostrarMensaje(`Error en credenciales`, "danger")

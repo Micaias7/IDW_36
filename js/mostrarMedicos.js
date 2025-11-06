@@ -1,10 +1,13 @@
 import { inicializarLocalStorage } from "../config/inicializarLocalStorage.js";
+import { eliminarMedico } from "./eliminarMedicos.js"
+import { abrirModalEditarMedico } from "./editarMedicos.js"
 
 inicializarLocalStorage();
 
 // Mostrar médicos en versión escritorio
 export const mostrarMedicosEnIndex = () => {
     const contenedor = document.getElementById("medicosEscritorio");
+    if (!contenedor) return;
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
     contenedor.innerHTML = ""; 
 
@@ -24,6 +27,7 @@ export const mostrarMedicosEnIndex = () => {
 export const actualizarCarruselMovil = () => {
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
     const carouselInner = document.getElementById("medicosCarouseCards");
+    if (!carouselInner) return;
     carouselInner.innerHTML = "";
 
     medicos.forEach((m, index) => {
@@ -42,8 +46,46 @@ export const actualizarCarruselMovil = () => {
     });
 };
 
+// Mostrar médicos en la página de alta de médicos
+export const mostrarMedicosEnAlta = () => {
+    const tbody = document.getElementById("listaDeMedicos");
+    if (!tbody) return;
+    tbody.innerHTML = "";
+    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+    
+    medicos.forEach((m, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <th scope="row">${index + 1}</th>
+            <td>${m.nombre} ${m.apellido}</td>
+            <td>${m.especialidad}</td>
+            <td>
+                <i class="bi bi-pencil-square text-primary" title="Editar" data-index="${index}" style="cursor:pointer"></i> |
+                <i class="bi bi-person-x text-danger" title="Borrar" data-index="${index}" style="cursor:pointer"></i>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+    //  Agregar eventos de edición y eliminación
+    tbody.querySelectorAll(".bi-person-x").forEach(icon => {
+        icon.addEventListener("click", (e) => {
+            const index = e.target.getAttribute("data-index");
+            eliminarMedico(index);
+        });
+    });
+
+    tbody.querySelectorAll(".bi-pencil-square").forEach(icon => {
+        icon.addEventListener("click", (e) => {
+            const index = e.target.getAttribute("data-index");
+            abrirModalEditarMedico(index);
+        });
+    });
+};
+
 // Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     mostrarMedicosEnIndex();
     actualizarCarruselMovil();
+    mostrarMedicosEnAlta();
 });
