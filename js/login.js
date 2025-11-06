@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const formLogin = document.getElementById("formLogin");
 const usuario = document.getElementById("usuario");
 const clave = document.getElementById("clave");
@@ -33,3 +34,40 @@ formLogin.addEventListener("submit", function(event){
     }
 
 })
+=======
+const formLogin = document.getElementById("formLogin");
+const usuario = document.getElementById("usuario");
+const clave = document.getElementById("clave");
+const mensaje = document.getElementById("mensaje");
+
+function mostrarMensaje(texto, tipo){
+    mensaje.innerHTML = `
+        <div class="col-md-6 col-lg-4">
+            <div class="alert alert-${tipo}">${texto}</div>
+        </div>`
+}
+
+formLogin.addEventListener("submit", function(event){
+    event.preventDefault();
+
+    let usuarioInput = usuario.value.trim();
+    let claveInput = clave.value.trim();
+
+    const isUsuario = usuarios.find(
+        u => u.usuario === usuarioInput && u.clave === claveInput
+    );
+
+    if(isUsuario){
+        sessionStorage.setItem("usuarioLogueado", usuarioInput);
+        if(usuarioInput === "admin"){
+            window.location.href = "panel.html"
+        } else {
+            window.location.href = "index.html"
+        }
+
+    } else {
+        mostrarMensaje(`Error en credenciales`, "danger")
+    }
+
+})
+>>>>>>> 77130f34bf90f62c8678fad2f89fc1b2a99abc75

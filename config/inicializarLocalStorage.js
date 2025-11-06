@@ -6,3 +6,5 @@ export const inicializarLocalStorage = () => {
     console.log("LocalStorage inicializado con médicos predeterminados");
   }
 };
+
+
