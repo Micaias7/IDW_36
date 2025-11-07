@@ -1,34 +1,30 @@
 const botones = document.querySelectorAll("#panelTabs .nav-link");
 const contenedor = document.getElementById("contenido");
 
-botones.forEach((boton) => {
+botones.forEach(boton => {
   boton.addEventListener("click", () => {
-    // Cambia el botón activo visualmente
-    botones.forEach((b) => b.classList.remove("active"));
+    botones.forEach(b => b.classList.remove("active"));
     boton.classList.add("active");
-
-    // Cargar la sección correspondiente
     cargarSeccion(boton.dataset.section);
   });
 });
 
 async function cargarSeccion(seccion) {
   let archivo = "";
-  let scriptSrc = "";
+  let scriptModulo = "";
 
-  // Definir qué HTML y script cargar según la pestaña
   switch (seccion) {
     case "medicos":
       archivo = "altaMedicos.html";
-      scriptSrc = "js/altaMedicos.js";
+      scriptModulo = "./medicos/altaMedicos.js";
       break;
     case "especialidades":
       archivo = "altaEspecialidades.html";
-      scriptSrc = "js/altaEspecialidades.js";
+      scriptModulo = "./especialidades/altaEspecialidades.js";
       break;
     case "turnos":
       archivo = "altaTurnos.html";
-      scriptSrc = "js/altaTurnos.js";
+      scriptModulo = "./turnos/altaTurnos.js";
       break;
     default:
       contenedor.innerHTML = `
@@ -36,9 +32,8 @@ async function cargarSeccion(seccion) {
         <p>Seleccioná una sección para comenzar.</p>
       `;
       return;
-  }
+  };
 
-  // Spinner de carga
   contenedor.innerHTML = `
     <div class="d-flex justify-content-center align-items-center" style="height:200px;">
       <div class="spinner-border text-success" role="status"></div>
@@ -52,11 +47,23 @@ async function cargarSeccion(seccion) {
     const html = await respuesta.text();
     contenedor.innerHTML = html;
 
-    // 🔹 Ejecutar el JS correspondiente
-    const script = document.createElement("script");
-    script.type = "module";
-    script.src = scriptSrc;
-    contenedor.appendChild(script);
+    // Importar el módulo correspondiente
+    import(scriptModulo)
+      .then(mod => {
+        if (seccion === "medicos" && mod.inicializarAltaMedicos) {
+          mod.inicializarAltaMedicos();
+          import("./medicos/mostrarMedicos.js")
+            .then(mod2 => mod2.mostrarMedicosEnAlta())
+            .catch(err => console.error(err));
+        };
+        if (seccion === "especialidades" && mod.inicializarAltaEspecialidades) {
+          mod.inicializarAltaEspecialidades();
+          import("./especialidades/mostrarEspecialidades.js")
+            .then(mod2 => mod2.mostrarEspecialidades())
+            .catch(err => console.error(err));
+        };
+      })
+      .catch(err => console.error(`Error al cargar módulo de ${seccion}:`, err));
 
   } catch (error) {
     contenedor.innerHTML = `
@@ -64,8 +71,8 @@ async function cargarSeccion(seccion) {
         Error al cargar la sección: ${error.message}
       </div>
     `;
-  }
-}
+  };
+};
 
-// Carga inicial: abre la pestaña de médicos por defecto
+// Carga inicial
 document.addEventListener("DOMContentLoaded", () => cargarSeccion("medicos"));

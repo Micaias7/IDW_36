@@ -1,8 +1,8 @@
-import { inicializarLocalStorage } from "../config/inicializarLocalStorage.js";
+import { inicializarMedicos} from "../../config/inicializarLocalStorage.js";
 import { eliminarMedico } from "./eliminarMedicos.js"
 import { abrirModalEditarMedico } from "./editarMedicos.js"
 
-inicializarLocalStorage();
+inicializarMedicos();
 
 // Mostrar médicos en versión escritorio
 export const mostrarMedicosEnIndex = () => {
@@ -53,15 +53,15 @@ export const mostrarMedicosEnAlta = () => {
     tbody.innerHTML = "";
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
     
-    medicos.forEach((m, index) => {
+    medicos.forEach( m => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <th scope="row">${index + 1}</th>
+            <th scope="row">${m.id}</th>
             <td>${m.nombre} ${m.apellido}</td>
             <td>${m.especialidad}</td>
             <td>
-                <i class="bi bi-pencil-square text-primary" title="Editar" data-index="${index}" style="cursor:pointer"></i> |
-                <i class="bi bi-person-x text-danger" title="Borrar" data-index="${index}" style="cursor:pointer"></i>
+                <i class="bi bi-pencil-square text-primary" title="Editar" data-id="${m.id}" style="cursor:pointer"></i> |
+                <i class="bi bi-person-x text-danger" title="Borrar" data-id="${m.id}" style="cursor:pointer"></i>
             </td>
         `;
         tbody.appendChild(tr);
@@ -69,23 +69,20 @@ export const mostrarMedicosEnAlta = () => {
 
     //  Agregar eventos de edición y eliminación
     tbody.querySelectorAll(".bi-person-x").forEach(icon => {
-        icon.addEventListener("click", (e) => {
-            const index = e.target.getAttribute("data-index");
-            eliminarMedico(index);
+        icon.addEventListener("click", e => {
+            const id = e.target.getAttribute("data-id");
+            eliminarMedico(id);
         });
     });
 
     tbody.querySelectorAll(".bi-pencil-square").forEach(icon => {
-        icon.addEventListener("click", (e) => {
-            const index = e.target.getAttribute("data-index");
-            abrirModalEditarMedico(index);
+        icon.addEventListener("click", e => {
+            const id = e.target.getAttribute("data-id");
+            abrirModalEditarMedico(id);
         });
     });
 };
 
 // Ejecutar al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    mostrarMedicosEnIndex();
-    actualizarCarruselMovil();
-    mostrarMedicosEnAlta();
-});
+mostrarMedicosEnIndex();
+actualizarCarruselMovil();

@@ -1,8 +1,11 @@
-import { mostrarMedicosEnAlta, mostrarMedicosEnIndex, actualizarCarruselMovil } from "./mostrarMedicos.js";
+import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
 
-export function abrirModalEditarMedico(index) {
+export function abrirModalEditarMedico(id) {
+    const confirmar = confirm(`¿Ingresar en modo Edicion?`);
+    if (!confirmar) return
+
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
-    const medico = medicos[index];
+    const medicoAEditar = medicos.find(m => m.id === Number(id));
 
     const form = document.getElementById("altaMedicoForm");
     const inputNombre = document.getElementById("nombre");
@@ -12,22 +15,22 @@ export function abrirModalEditarMedico(index) {
     const inputGenero = document.getElementsByName("genero");
 
     // Llenar formulario con datos existentes
-    inputNombre.value = medico.nombre || "";
-    inputApellido.value = medico.apellido || "";
-    inputEspecialidad.value = medico.especialidad || "";
+    inputNombre.value = medicoAEditar.nombre || "";
+    inputApellido.value = medicoAEditar.apellido || "";
+    inputEspecialidad.value = medicoAEditar.especialidad || "";
     
     try {
-        new URL(medico.imagenFinal);
-        inputImagen.value = medico.imagenFinal;
+        new URL(medicoAEditar.imagenFinal);
+        inputImagen.value = medicoAEditar.imagenFinal;
     } catch {
-        inputImagen.value = ""; // el input queda vacío, pero no toca medico.imagenFinal
-    }
+        inputImagen.value = ""; // el input queda vacío, pero no toca medicoAEditar.imagenFinal
+    };
 
     if(inputGenero) {
         inputGenero.forEach(radio => {
-            radio.checked = radio.value === medico.genero;
+            radio.checked = radio.value === medicoAEditar.genero;
         });
-    }
+    };
 
     const botonGuardar = document.getElementById("botonGuardarAlta");
     if(botonGuardar) botonGuardar.textContent = "Guardar Cambios";
@@ -35,7 +38,7 @@ export function abrirModalEditarMedico(index) {
     const tituloEdicion = document.getElementById("titulo");
     if(tituloEdicion) tituloEdicion.textContent = "Edición de Médico";
 
-    form.dataset.editIndex = index;
+    form.dataset.editId = id;
 
     const onSubmitOriginal = form.onsubmit;
 
@@ -46,43 +49,37 @@ export function abrirModalEditarMedico(index) {
         if (!inputNombre.value || !inputApellido.value || !inputEspecialidad.value) {
             alert("Nombre, apellido y especialidad son obligatorios.");
             return;
-        }
+        };
 
-        // Actualizar solo los campos válidos
-        medico.nombre = inputNombre.value.trim();
-        medico.apellido = inputApellido.value.trim();
-        medico.especialidad = inputEspecialidad.value.trim();
+        medicoAEditar.nombre = inputNombre.value.trim();
+        medicoAEditar.apellido = inputApellido.value.trim();
+        medicoAEditar.especialidad = inputEspecialidad.value.trim();
 
-       // Validar URL de imagen solo si se ingresó algo
         if (inputImagen.value.trim() !== "") {
             try {
                 new URL(inputImagen.value);
-                medico.imagenFinal = inputImagen.value;
+                medicoAEditar.imagenFinal = inputImagen.value;
             } catch {
                 alert("URL de imagen no válida. Se mantiene la anterior.");
-            }
-        }
+            };
+        };
 
         if(inputGenero) {
             const seleccionado = Array.from(inputGenero).find(r => r.checked);
-            if(seleccionado) medico.genero = seleccionado.value;
-        }
+            if(seleccionado) medicoAEditar.genero = seleccionado.value;
+        };
 
-        // Guardar cambios en localStorage
-        medicos[index] = medico;
         localStorage.setItem("medicos", JSON.stringify(medicos));
 
         // Refrescar UI
         mostrarMedicosEnAlta();
-        mostrarMedicosEnIndex();
-        actualizarCarruselMovil();
 
         // Reset del formulario y botón
         form.reset();
-        delete form.dataset.editIndex;
+        delete form.dataset.editId;
         if(botonGuardar) botonGuardar.textContent = "Agregar Médico";
         if(tituloEdicion) tituloEdicion.textContent = "Alta de Médico";
 
         form.onsubmit = onSubmitOriginal;
     };
-}
+};

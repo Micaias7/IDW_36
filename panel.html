@@ -1,46 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Control - IDW S.A</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - IDW S.A</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <link rel="stylesheet" href="css/index.css">
-</head>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
 
-<body>
-  <header class="bg-success text-white py-3 text-center">
-    <h1>Panel de Control</h1>
-  </header>
+  <body>
+    <header class="py-2 text-center">
+      <nav class="navbar navbar-expand-md">
+        <div class="container-fluid">
+          <img src="public/loguito.png" alt="Logo" class="img-fluid" style="max-width:300px;">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-  <main class="container my-5">
-    <!-- Menú de navegación interno -->
-    <ul class="nav nav-tabs justify-content-center" id="panelTabs">
-      <li class="nav-item">
-        <button class="nav-link active" data-section="medicos"> Médicos</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-section="especialidades"> Especialidades</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-section="turnos"> Turnos</button>
-      </li>
-    </ul>
+          <div class="collapse navbar-collapse m-2" id="navbarToggler">
+            <ul class="navbar-nav mx-auto gap-2">
+              <li class="nav-item">
+                <a class="nav-link active fs-6" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6" href="informacion.html">Información Institucional</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6" href="contacto.html">Contacto</a>
+              </li>
+              <li class="nav-item" id="navLogout">
+                <a class="nav-link fs-6" href="#">Cerrar Sesion</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-    <!-- Contenedor dinámico -->
-    <section id="contenido" class="mt-4 text-center">
-      <h2>Bienvenido al Panel de Control</h2>
-      <p>Seleccioná una sección para comenzar.</p>
-    </section>
-  </main>
+    <main class="container my-5">
+      <!-- Menú de navegación interno -->
+      <ul class="nav nav-tabs justify-content-center border-0" id="panelTabs">
+        <li class="nav-item">
+          <button class="nav-link active" data-section="medicos"> Médicos </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-section="especialidades"> Especialidades </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-section="turnos"> Obras Sociales </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-section="turnos"> Turnos </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-section="turnos"> Reservas </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-section="turnos"> Usuarios </button>
+        </li>
+      </ul>
 
-    <footer class="d-flex justify-content-center fw-bold py-3">
-        <p>&copy; 2025 IDW grupo 36</p>
-    </footer>
+      <!-- Contenedor dinámico -->
+      <section id="contenido" class="mt-4 text-center">
+        <h2>Bienvenido al Panel de Control</h2>
+        <p>Seleccioná una sección para comenzar.</p>
+      </section>
+    </main>
 
-  <script src="js/panel.js"></script>
-</body>
+      <footer class="d-flex justify-content-center fw-bold py-3">
+          <p>&copy; 2025 IDW grupo 36</p>
+      </footer>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/panel.js"></script>
+    <script type="module" src="config/controlUsuarios.js"></script>
+    <script type="module" src="js/medicos/altaMedicos.js"></script>
+    <script type="module" src="js/especialidades/mostrarEspecialidades.js"></script>
+  </body>
 </html>
