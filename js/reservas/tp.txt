@@ -1,0 +1,14 @@
+Solo CREAR (Una vez generada la reserva mostrar un mensaje de OK)
+Permitir visualizar de manera tabular las reservas realizadas por los pacientes. (ROL ADMINISTRADOR)
+
+(ROL VISITANTE)
+Reservas:
+ • id: número identificador,
+ • Documento: string para aceptar pacientes del extranjero,
+ • Apellido y nombre del paciente: string,
+ • Turno: identificador de Turno,
+ • Especialidad: identificador de Especialidad,
+ • Obra social: identificador de Obra Social,
+ • Valor total (calculado según médico y obra social seleccionada)
+
+La visualizacion de los datos en el panel administrador se maneja desde la funcion cargarSeccion que esta en panel.js
