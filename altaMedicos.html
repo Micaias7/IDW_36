@@ -1,12 +1,12 @@
 <section class="my-5 p-4 rounded-3 text-center">
-   <h2 id="titulo" class="text-center mb-4">Alta de Médico</h2>
+  <h2 id="titulo" class="text-center mb-4">Alta de Médico</h2>
 
   <form id="altaMedicoForm" class="border rounded p-4 bg-light shadow-sm mx-auto text-start">
     <div class="mb-3 row align-items-center">
       <label for="nombre" class="col-sm-3 col-form-label text-sm-end">Nombre:</label>
-        <div class="col-sm-9">
-          <input type="text" id="nombre" name="nombre" class="form-control" required>
-        </div>
+      <div class="col-sm-9">
+        <input type="text" id="nombre" name="nombre" class="form-control" required>
+      </div>
     </div>
 
     <div class="mb-3 row align-items-center">
@@ -43,6 +43,15 @@
         <input type="url" id="imagen" name="imagen" class="form-control" placeholder="https://ejemplo.com/foto.jpg">
       </div>
     </div>
+    <!-- Agregado: opción para subir imagen desde la computadora -->
+    <!-- Permite al usuario elegir un archivo de imagen local -->
+    <!-- Si se selecciona, esa imagen se convertirá a Base64 automáticamente -->
+    <div class="mb-3 row align-items-center"> <!-- <-- agregado -->
+      <label for="imagenArchivo" class="col-sm-3 col-form-label text-sm-end">Subir imagen:</label> <!-- <-- agregado -->
+      <div class="col-sm-9"> <!-- <-- agregado -->
+        <input type="file" id="imagenArchivo" name="imagenArchivo" class="form-control" accept="image/*"> <!-- <-- agregado -->
+      </div> <!-- <-- agregado -->
+    </div> <!-- <-- agregado -->
 
     <div class="text-center mt-4">
       <button id="botonGuardarAlta" type="submit" class="btn btn-primary px-5">Registrar Médico</button>
@@ -62,8 +71,7 @@
           <th scope="col">EDITAR | BORRAR</th>
         </tr>
       </thead>
-      <tbody id="listaDeMedicos">
-      </tbody>
+      <tbody id="listaDeMedicos"></tbody>
     </table>
   </div>
 </section>
