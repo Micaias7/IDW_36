@@ -1,34 +1,60 @@
-import { obtenerNuevoId } from "../../config/generadorId.js";
+// ✅ IMPORTS CORRECTOS
+import { obtenerNuevoId } from "../config/generadorId.js";
 import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
+
+console.log("✅ altaMedicos.js se está ejecutando correctamente");
 
 export function inicializarAltaMedicos() {
   const formAlta = document.getElementById("altaMedicoForm");
   if (!formAlta) return;
 
   formAlta.addEventListener("submit", (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      if (formAlta.dataset.editId) return;
+    if (formAlta.dataset.editId) return;
 
-      const nombre = document.getElementById("nombre").value.trim();
-      const apellido = document.getElementById("apellido").value.trim();
-      const especialidad = document.getElementById("especialidad").value.trim();
-      const genero = document.querySelector('input[name="genero"]:checked')?.value || "";
-      const imagen = document.getElementById("imagen").value || "../public/doctor.png";
-      const id = obtenerNuevoId("ultimoIdMed");
+    const id = obtenerNuevoId("ultimoIdMed");   
+    const matricula = document.getElementById("matricula").value.trim();
+    const nombre = document.getElementById("nombre").value.trim();
+    const apellido = document.getElementById("apellido").value.trim();
+    const especialidad = document.getElementById("especialidad").value.trim();
+    const genero = document.querySelector('input[name="genero"]:checked')?.value || "";
+    const descripcion = document.getElementById("descripcion").value.trim();
+    const valorConsulta = parseFloat(document.getElementById("valorConsulta").value);
+    const imagen = document.getElementById("imagen").value || "../public/doctor.png";
 
-      if (!nombre || !apellido || !especialidad) {
-          alert("Nombre, apellido y especialidad son obligatorios.");
-          return;
-      }
+    if (!nombre || !apellido || !especialidad || isNaN(valorConsulta)) {
+      alert("Por favor, completá todos los campos obligatorios.");
+      return;
+    }
 
-      const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+    const obrasSociales = [];
+    if (document.getElementById("osde").checked) obrasSociales.push(1);
+    if (document.getElementById("pami").checked) obrasSociales.push(2);
+    if (document.getElementById("ioma").checked) obrasSociales.push(3);
 
-      medicos.push({ id, nombre, apellido, especialidad, genero, imagenFinal: imagen });
-      localStorage.setItem("medicos", JSON.stringify(medicos));
+    const medico = {
+      id,
+      matricula,
+      nombre,
+      apellido,
+      especialidad,
+      genero,
+      descripcion,
+      obrasSociales,
+      valorConsulta,
+      imagen,
+    };
 
-      mostrarMedicosEnAlta();
-      alert("Registro exitoso");
-      formAlta.reset();
+    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+    medicos.push(medico);
+    localStorage.setItem("medicos", JSON.stringify(medicos));
+
+    mostrarMedicosEnAlta();
+    alert("✅ Médico registrado correctamente.");
+    formAlta.reset();
   });
-};
+}
+
+// 🟢 Ejecutar la función al cargar la página
+inicializarAltaMedicos();

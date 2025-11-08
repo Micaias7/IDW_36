@@ -1,85 +1,111 @@
 import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
 
 export function abrirModalEditarMedico(id) {
-    const confirmar = confirm(`¿Ingresar en modo Edicion?`);
-    if (!confirmar) return
+  const confirmar = confirm(`¿Ingresar en modo Edición?`);
+  if (!confirmar) return;
 
-    const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
-    const medicoAEditar = medicos.find(m => m.id === Number(id));
+  const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+  const medicoAEditar = medicos.find((m) => m.id === Number(id));
+  if (!medicoAEditar) {
+    alert("❌ Médico no encontrado.");
+    return;
+  }
 
-    const form = document.getElementById("altaMedicoForm");
-    const inputNombre = document.getElementById("nombre");
-    const inputApellido = document.getElementById("apellido");
-    const inputEspecialidad = document.getElementById("especialidad");
-    const inputImagen = document.getElementById("imagen");
-    const inputGenero = document.getElementsByName("genero");
+  const form = document.getElementById("altaMedicoForm");
 
-    // Llenar formulario con datos existentes
-    inputNombre.value = medicoAEditar.nombre || "";
-    inputApellido.value = medicoAEditar.apellido || "";
-    inputEspecialidad.value = medicoAEditar.especialidad || "";
-    
-    try {
-        new URL(medicoAEditar.imagenFinal);
-        inputImagen.value = medicoAEditar.imagenFinal;
-    } catch {
-        inputImagen.value = ""; // el input queda vacío, pero no toca medicoAEditar.imagenFinal
-    };
+  // --- Obtener los campos ---
+  const inputId = document.getElementById("idMedico");
+  const inputMatricula = document.getElementById("matricula");
+  const inputNombre = document.getElementById("nombre");
+  const inputApellido = document.getElementById("apellido");
+  const inputEspecialidad = document.getElementById("especialidad");
+  const inputDescripcion = document.getElementById("descripcion");
+  const inputValorConsulta = document.getElementById("valorConsulta");
+  const inputImagen = document.getElementById("imagen");
+  const inputGenero = document.getElementsByName("genero");
 
-    if(inputGenero) {
-        inputGenero.forEach(radio => {
-            radio.checked = radio.value === medicoAEditar.genero;
-        });
-    };
+  // Obras sociales
+  const checkOsde = document.getElementById("osde");
+  const checkPami = document.getElementById("pami");
+  const checkIoma = document.getElementById("ioma");
 
-    const botonGuardar = document.getElementById("botonGuardarAlta");
-    if(botonGuardar) botonGuardar.textContent = "Guardar Cambios";
+  // --- Llenar formulario con datos existentes ---
+  inputId.value = medicoAEditar.id || "";
+  inputMatricula.value = medicoAEditar.matricula || "";
+  inputNombre.value = medicoAEditar.nombre || "";
+  inputApellido.value = medicoAEditar.apellido || "";
+  inputEspecialidad.value = medicoAEditar.especialidad || "";
+  inputDescripcion.value = medicoAEditar.descripcion || "";
+  inputValorConsulta.value = medicoAEditar.valorConsulta || "";
 
-    const tituloEdicion = document.getElementById("titulo");
-    if(tituloEdicion) tituloEdicion.textContent = "Edición de Médico";
+  // Imagen: usar nueva o vieja propiedad
+  inputImagen.value = medicoAEditar.imagen || medicoAEditar.imagenFinal || "";
 
-    form.dataset.editId = id;
+  // Género
+  Array.from(inputGenero).forEach(
+    (radio) => (radio.checked = radio.value === medicoAEditar.genero)
+  );
 
-    const onSubmitOriginal = form.onsubmit;
+  // Obras sociales (IDs numéricos)
+  checkOsde.checked = medicoAEditar.obrasSociales?.includes(1);
+  checkPami.checked = medicoAEditar.obrasSociales?.includes(2);
+  checkIoma.checked = medicoAEditar.obrasSociales?.includes(3);
 
-    form.onsubmit = (e) => {
-        e.preventDefault();
+  // --- Cambiar interfaz ---
+  const botonGuardar = document.getElementById("botonGuardarAlta");
+  const tituloEdicion = document.getElementById("titulo");
 
-        // Validar campos obligatorios
-        if (!inputNombre.value || !inputApellido.value || !inputEspecialidad.value) {
-            alert("Nombre, apellido y especialidad son obligatorios.");
-            return;
-        };
+  if (botonGuardar) botonGuardar.textContent = "Guardar Cambios";
+  if (tituloEdicion) tituloEdicion.textContent = "Edición de Médico";
 
-        medicoAEditar.nombre = inputNombre.value.trim();
-        medicoAEditar.apellido = inputApellido.value.trim();
-        medicoAEditar.especialidad = inputEspecialidad.value.trim();
+  form.dataset.editId = id;
 
-        if (inputImagen.value.trim() !== "") {
-            try {
-                new URL(inputImagen.value);
-                medicoAEditar.imagenFinal = inputImagen.value;
-            } catch {
-                alert("URL de imagen no válida. Se mantiene la anterior.");
-            };
-        };
+  const onSubmitOriginal = form.onsubmit;
 
-        if(inputGenero) {
-            const seleccionado = Array.from(inputGenero).find(r => r.checked);
-            if(seleccionado) medicoAEditar.genero = seleccionado.value;
-        };
+  // --- Sobrescribir comportamiento del submit temporalmente ---
+  form.onsubmit = (e) => {
+    e.preventDefault();
 
-        localStorage.setItem("medicos", JSON.stringify(medicos));
+    // Validar campos obligatorios
+    if (!inputNombre.value || !inputApellido.value || !inputEspecialidad.value) {
+      alert("Nombre, apellido y especialidad son obligatorios.");
+      return;
+    }
 
-        // Refrescar UI
-        mostrarMedicosEnAlta();
+    // Actualizar objeto en memoria
+    medicoAEditar.id = Number(inputId.value);
+    medicoAEditar.matricula = inputMatricula.value.trim();
+    medicoAEditar.nombre = inputNombre.value.trim();
+    medicoAEditar.apellido = inputApellido.value.trim();
+    medicoAEditar.especialidad = inputEspecialidad.value.trim();
+    medicoAEditar.genero =
+      Array.from(inputGenero).find((r) => r.checked)?.value || "";
+    medicoAEditar.descripcion = inputDescripcion.value.trim();
+    medicoAEditar.valorConsulta = parseFloat(inputValorConsulta.value) || 0;
+    medicoAEditar.imagen = inputImagen.value.trim() || "../public/doctor.png";
 
-        // Reset del formulario y botón
-        form.reset();
-        delete form.dataset.editId;
-        if(botonGuardar) botonGuardar.textContent = "Agregar Médico";
-        if(tituloEdicion) tituloEdicion.textContent = "Alta de Médico";
+    // Obras sociales actualizadas
+    medicoAEditar.obrasSociales = [];
+    if (checkOsde.checked) medicoAEditar.obrasSociales.push(1);
+    if (checkPami.checked) medicoAEditar.obrasSociales.push(2);
+    if (checkIoma.checked) medicoAEditar.obrasSociales.push(3);
 
-        form.onsubmit = onSubmitOriginal;
-    };
-};
+    // Guardar cambios en LocalStorage
+    localStorage.setItem("medicos", JSON.stringify(medicos));
+
+    // Refrescar interfaz
+    mostrarMedicosEnAlta();
+
+    // Resetear formulario y estado
+    form.reset();
+    delete form.dataset.editId;
+
+    if (botonGuardar) botonGuardar.textContent = "Registrar Médico";
+    if (tituloEdicion) tituloEdicion.textContent = "Alta de Médico";
+
+    // Restaurar comportamiento original del formulario
+    form.onsubmit = onSubmitOriginal;
+
+    alert("✅ Cambios guardados correctamente.");
+  };
+}
