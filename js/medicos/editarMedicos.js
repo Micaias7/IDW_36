@@ -1,4 +1,5 @@
 import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
+import { convertirArchivoABase64 } from "../../config/convertidorBase64.js"
 
 export function abrirModalEditarMedico(id) {
     const confirmar = confirm(`¿Ingresar en modo Edicion?`);
@@ -11,20 +12,12 @@ export function abrirModalEditarMedico(id) {
     const inputNombre = document.getElementById("nombre");
     const inputApellido = document.getElementById("apellido");
     const inputEspecialidad = document.getElementById("especialidad");
-    const inputImagen = document.getElementById("imagen");
     const inputGenero = document.getElementsByName("genero");
 
     // Llenar formulario con datos existentes
     inputNombre.value = medicoAEditar.nombre || "";
     inputApellido.value = medicoAEditar.apellido || "";
-    inputEspecialidad.value = medicoAEditar.especialidad || "";
-    
-    try {
-        new URL(medicoAEditar.imagenFinal);
-        inputImagen.value = medicoAEditar.imagenFinal;
-    } catch {
-        inputImagen.value = ""; // el input queda vacío, pero no toca medicoAEditar.imagenFinal
-    };
+    inputEspecialidad.value = medicoAEditar.especialidad || "";  
 
     if(inputGenero) {
         inputGenero.forEach(radio => {
@@ -42,7 +35,7 @@ export function abrirModalEditarMedico(id) {
 
     const onSubmitOriginal = form.onsubmit;
 
-    form.onsubmit = (e) => {
+    form.onsubmit = async (e) => {
         e.preventDefault();
 
         // Validar campos obligatorios
@@ -55,14 +48,13 @@ export function abrirModalEditarMedico(id) {
         medicoAEditar.apellido = inputApellido.value.trim();
         medicoAEditar.especialidad = inputEspecialidad.value.trim();
 
-        if (inputImagen.value.trim() !== "") {
-            try {
-                new URL(inputImagen.value);
-                medicoAEditar.imagenFinal = inputImagen.value;
-            } catch {
-                alert("URL de imagen no válida. Se mantiene la anterior.");
-            };
+        let imagenFinalNueva = medicoAEditar.imagenFinal;
+        const archivo = document.getElementById("imagenArchivo").files[0];
+        if (archivo) {
+            imagenFinalNueva = await convertirArchivoABase64(archivo);
         };
+
+        medicoAEditar.imagenFinal = imagenFinalNueva;
 
         if(inputGenero) {
             const seleccionado = Array.from(inputGenero).find(r => r.checked);
@@ -70,6 +62,7 @@ export function abrirModalEditarMedico(id) {
         };
 
         localStorage.setItem("medicos", JSON.stringify(medicos));
+        alert("Edicion exitosa");
 
         // Refrescar UI
         mostrarMedicosEnAlta();
