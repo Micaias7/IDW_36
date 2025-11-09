@@ -1,8 +1,10 @@
 // ✅ IMPORTS CORRECTOS
-import { obtenerNuevoId } from "../config/generadorId.js";
-import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
 
-console.log("✅ altaMedicos.js se está ejecutando correctamente");
+
+// import { obtenerNuevoId } from "../config/generadorId.js";
+// import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
+
+//  console.log("✅ altaMedicos.js se está ejecutando correctamente");
 
 export function inicializarAltaMedicos() {
   const formAlta = document.getElementById("altaMedicoForm");
