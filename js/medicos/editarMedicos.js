@@ -1,3 +1,4 @@
+
 import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
 
 export function abrirModalEditarMedico(id) {
@@ -30,7 +31,10 @@ export function abrirModalEditarMedico(id) {
   const checkIoma = document.getElementById("ioma");
 
   // --- Llenar formulario con datos existentes ---
+  if (inputId) {
   inputId.value = medicoAEditar.id || "";
+}
+
   inputMatricula.value = medicoAEditar.matricula || "";
   inputNombre.value = medicoAEditar.nombre || "";
   inputApellido.value = medicoAEditar.apellido || "";

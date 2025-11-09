@@ -1,10 +1,7 @@
-// ✅ IMPORTS CORRECTOS
+import { obtenerNuevoId } from "../../config/generadorId.js";
+import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
 
 
-// import { obtenerNuevoId } from "../config/generadorId.js";
-// import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
-
-//  console.log("✅ altaMedicos.js se está ejecutando correctamente");
 
 export function inicializarAltaMedicos() {
   const formAlta = document.getElementById("altaMedicoForm");
@@ -15,7 +12,7 @@ export function inicializarAltaMedicos() {
 
     if (formAlta.dataset.editId) return;
 
-    const id = obtenerNuevoId("ultimoIdMed");   
+    
     const matricula = document.getElementById("matricula").value.trim();
     const nombre = document.getElementById("nombre").value.trim();
     const apellido = document.getElementById("apellido").value.trim();
@@ -24,6 +21,8 @@ export function inicializarAltaMedicos() {
     const descripcion = document.getElementById("descripcion").value.trim();
     const valorConsulta = parseFloat(document.getElementById("valorConsulta").value);
     const imagen = document.getElementById("imagen").value || "../public/doctor.png";
+
+    const id = obtenerNuevoId("ultimoIdMed");
 
     if (!nombre || !apellido || !especialidad || isNaN(valorConsulta)) {
       alert("Por favor, completá todos los campos obligatorios.");
