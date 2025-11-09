@@ -55,6 +55,9 @@ export const medicosIniciales = [
     especialidad: "Dermatología",
     genero: "Dr.",
     matricula: "901234",
+    valorConsulta: 15000,
+    obrasSociales: ["Medifé", "Omint", "PAMI"],
+    descripcion: "Experto en el cuidado de la piel y tratamiento de enfermedades dermatológicas. Enfoque integral para la salud cutánea.",  
     imagenFinal: "public/doc5.jpg"
   },
   {
