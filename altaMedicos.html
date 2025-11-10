@@ -1,167 +1,147 @@
+<section class="my-5 p-4 rounded-3 text-center">
+  <h2 id="titulo" class="text-center mb-4">Alta de Médico</h2>
 
-  <section class="my-5 p-4 rounded-3 text-center">
-    <h2 id="titulo" class="text-center mb-4">Alta de Médico</h2>
+  <form id="altaMedicoForm" class="border rounded p-4 bg-light shadow-sm mx-auto text-start">
 
-    <form id="altaMedicoForm" class="border rounded p-4 bg-white shadow-sm mx-auto text-start">
-
-
-      <!-- Nombre -->
-      <div class="mb-3 row align-items-center">
-        <label for="nombre" class="col-sm-3 col-form-label text-sm-end">Nombre:</label>
-        <div class="col-sm-9">
-          <input type="text" id="nombre" name="nombre" class="form-control" required>
-        </div>
+    <div class="mb-3 row align-items-center">
+      <label for="nombre" class="col-sm-3 col-form-label text-sm-end">Nombre:</label>
+      <div class="col-sm-9">
+        <input type="text" id="nombre" name="nombre" class="form-control" required>
       </div>
+    </div>
 
-      <!-- Apellido -->
-      <div class="mb-3 row align-items-center">
-        <label for="apellido" class="col-sm-3 col-form-label text-sm-end">Apellido:</label>
-        <div class="col-sm-9">
-          <input type="text" id="apellido" name="apellido" class="form-control" required>
-        </div>
+    <div class="mb-3 row align-items-center">
+      <label for="apellido" class="col-sm-3 col-form-label text-sm-end">Apellido:</label>
+      <div class="col-sm-9">
+        <input type="text" id="apellido" name="apellido" class="form-control" required>
       </div>
+    </div>
 
-      <!-- Especialidad -->
-      <div class="mb-3 row align-items-center">
-        <label for="especialidad" class="col-sm-3 col-form-label text-sm-end">Especialidad:</label>
-        <div class="col-sm-9">
-          <input type="text" id="especialidad" name="especialidad" class="form-control" required>
-        </div>
+    <div class="mb-3 row align-items-center">
+      <label for="especialidad" class="col-sm-3 col-form-label text-sm-end">Especialidad:</label>
+      <div class="col-sm-9">
+        <input type="text" id="especialidad" name="especialidad" class="form-control" required>
       </div>
-
-      <!-- Género -->
-      <div class="mb-3 row align-items-center">
-        <label class="col-sm-3 col-form-label text-sm-end">Doctor/a:</label>
-        <div class="col-sm-9">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="genero" id="dr" value="Dr." required>
-            <label class="form-check-label" for="dr">Dr.</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="genero" id="dra" value="Dra.">
-            <label class="form-check-label" for="dra">Dra.</label>
-          </div>
-        </div>
-      </div>
+    </div>
       
-      <!-- Matrícula profesional -->
-      <div class="mb-3 row align-items-center">
-        <label for="matricula" class="col-sm-3 col-form-label text-sm-end">Matrícula profesional:</label>
-        <div class="col-sm-9">
-          <input type="number" id="matricula" name="matricula" class="form-control" required>
-        </div>
-      </div>
-
-      <!-- Descripción -->
-      <div class="mb-3 row align-items-center">
-        <label for="descripcion" class="col-sm-3 col-form-label text-sm-end">Descripción:</label>
-        <div class="col-sm-9">
-          <textarea id="descripcion" name="descripcion" class="form-control" rows="3" placeholder="Breve presentación del profesional"></textarea>
-        </div>
-      </div>
-
-    <!-- Obras sociales -->
-<div class="mb-3 row">
-  <label class="col-sm-3 col-form-label text-sm-end">Obras sociales:</label>
-  <div class="col-sm-9">
-    <div class="row row-cols-3 g-2" id="contenedorObrasSociales">
-      <div class="col">
+    <div class="mb-3 row align-items-center">
+      <label class="col-sm-3 col-form-label text-sm-end">Doctor/a:</label>
+      <div class="col-sm-9">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="1" id="osde">
-          <label class="form-check-label" for="osde">OSDE</label>
+          <input class="form-check-input" type="radio" name="genero" id="dr" value="Dr." required>
+          <label class="form-check-label" for="dr">Dr.</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="dra" value="Dra.">
+          <label class="form-check-label" for="dra">Dra.</label>
         </div>
       </div>
+    </div>      
+  
+    <div class="mb-3 row align-items-center">
+      <label for="matricula" class="col-sm-3 col-form-label text-sm-end">Matrícula profesional:</label>
+      <div class="col-sm-9">
+        <input type="number" id="matricula" name="matricula" class="form-control" required>
+      </div>
+    </div>
+      
+    <div class="mb-3 row align-items-center">
+      <label for="descripcion" class="col-sm-3 col-form-label text-sm-end">Descripción:</label>
+      <div class="col-sm-9">
+        <textarea id="descripcion" name="descripcion" class="form-control" rows="3" placeholder="Breve presentación del profesional"></textarea>
+        </div>
+        </div>
+            
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label text-sm-end">Obras sociales:</label>
+      <div class="col-sm-9">
+        <div class="row row-cols-3 g-2" id="contenedorObrasSociales">
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="1" id="osde">
+              <label class="form-check-label" for="osde">OSDE</label>
+            </div>
+          </div>
 
-      <div class="col">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="2" id="pami">
-          <label class="form-check-label" for="pami">PAMI</label>
-        </div>
-      </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="2" id="pami">
+              <label class="form-check-label" for="pami">PAMI</label>
+            </div>
+          </div>
 
-      <div class="col">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="3" id="ioma">
-          <label class="form-check-label" for="ioma">IOMA</label>
-        </div>
-      </div>
-     
-      <div class="col">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="4" id="swiss">
-          <label class="form-check-label" for="swiss">SWISS MEDICAL</label>
-        </div>
-      </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="3" id="ioma">
+              <label class="form-check-label" for="ioma">IOMA</label>
+            </div>
+          </div>
+      
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="4" id="swiss">
+              <label class="form-check-label" for="swiss">SWISS MEDICAL</label>
+            </div>
+          </div>
 
-      <div class="col">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="5" id="medife">
-          <label class="form-check-label" for="medife">MEDIFE</label>
-        </div>
-      </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="5" id="medife">
+              <label class="form-check-label" for="medife">MEDIFE</label>
+            </div>
+          </div>
 
-      <div class="col">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="6" id="iaps">
-          <label class="form-check-label" for="iaps">GALENO</label>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="6" id="iaps">
+              <label class="form-check-label" for="iaps">GALENO</label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-
-      <!-- Imagen -->
-      <div class="mb-3 row align-items-center">
-        <label for="imagen" class="col-sm-3 col-form-label text-sm-end">URL de imagen:</label>
-        <div class="col-sm-9">
-          <input type="url" id="imagen" name="imagen" class="form-control" placeholder="https://ejemplo.com/foto.jpg">
-        </div>
+    <div class="mb-3 row align-items-center">
+      <label for="imagen" class="col-sm-3 col-form-label text-sm-end">URL de imagen:</label>
+      <div class="col-sm-9">
+        <input type="url" id="imagen" name="imagen" class="form-control" placeholder="https://ejemplo.com/foto.jpg">
       </div>
-
-      <!-- Valor de consulta -->
-      <div class="mb-3 row align-items-center">
-        <label for="valorConsulta" class="col-sm-3 col-form-label text-sm-end">Valor de consulta ($):</label>
-        <div class="col-sm-9">
-          <input type="number" step="0.01" id="valorConsulta" name="valorConsulta" class="form-control" required>
-        </div>
+    </div>
+      
+    <div class="mb-3 row align-items-center">
+      <label for="valorConsulta" class="col-sm-3 col-form-label text-sm-end">Valor de consulta ($):</label>
+      <div class="col-sm-9">
+        <input type="number" step="0.01" id="valorConsulta" name="valorConsulta" class="form-control" required>
       </div>
-
-      <!-- Botón -->
-      <div class="text-center mt-4">
-        <button id="botonGuardarAlta" type="submit" class="btn btn-primary px-5">Registrar Médico</button>
-      </div>
-    </form>
-  </section>
+    </div>
+      
+    <div class="text-center mt-4">
+      <button id="botonGuardarAlta" type="submit" class="btn btn-primary px-5">Registrar Médico</button>
+    </div>
+  </form>
+</section>
 
   <!-- ===================== -->
   <!-- TABLA DE MÉDICOS -->
   <!-- ===================== -->
-  <section class="my-5 p-4 rounded-3 text-center">
-    <div class="container">
-      <table class="table table-hover table-sm caption-top table-bordered">
-        <caption>Lista de Médicos</caption>
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Matrícula</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Especialidad</th>
-            <th scope="col">Obras Sociales</th>
-            <th scope="col">Valor Consulta</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Foto</th>
-            <th scope="col">EDITAR | BORRAR</th>
-          </tr>
-        </thead>
-        <tbody id="listaDeMedicos"></tbody>
-      </table>
-    </div>
-  </section>
-
-
-
-
-
-
-
+<section class="my-5 p-4 rounded-3 text-center">
+  <div class="container">
+    <table class="table table-hover table-sm caption-top table-bordered">
+      <caption>Lista de Médicos</caption>
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Matrícula</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col">Obras Sociales</th>
+          <th scope="col">Valor Consulta</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Foto</th>
+          <th scope="col">EDITAR | BORRAR</th>
+        </tr>
+      </thead>
+      <tbody id="listaDeMedicos"></tbody>
+    </table>
+  </div>
+</section>

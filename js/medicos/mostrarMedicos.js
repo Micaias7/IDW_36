@@ -49,7 +49,7 @@ export const actualizarCarruselMovil = () => {
 
     item.innerHTML = `
       <div class="card mx-auto border-3 border-success rounded-3 shadow text-center p-3" style="max-width: 18rem;">
-        <img src="${m.imagen || m.imagenFinal || '../public/doctor.png'}" 
+        <img src="${ m.imagenFinal || '../public/doctor.png'}" 
              class="doc card-img-top" 
              alt="doctor" 
              style="height:180px; object-fit:cover; border-radius:10px;">

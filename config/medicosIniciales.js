@@ -10,7 +10,6 @@ export const medicosIniciales = [
     obrasSociales: ["OSDE", "Swiss Medical", "IOMA"],
     descripcion: "Especialista en trastornos neurológicos. Más de 15 años de experiencia en diagnóstico y tratamiento de enfermedades del sistema nervioso.",
     imagenFinal: "public/doc3.jpg",
-
   },
   {
     id: 2,

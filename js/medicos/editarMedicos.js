@@ -1,4 +1,3 @@
-
 import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
 
 export function abrirModalEditarMedico(id) {
@@ -13,42 +12,35 @@ export function abrirModalEditarMedico(id) {
   }
 
   const form = document.getElementById("altaMedicoForm");
-
   // --- Obtener los campos ---
-  const inputId = document.getElementById("idMedico");
-  const inputMatricula = document.getElementById("matricula");
   const inputNombre = document.getElementById("nombre");
   const inputApellido = document.getElementById("apellido");
   const inputEspecialidad = document.getElementById("especialidad");
-  const inputDescripcion = document.getElementById("descripcion");
-  const inputValorConsulta = document.getElementById("valorConsulta");
-  const inputImagen = document.getElementById("imagen");
   const inputGenero = document.getElementsByName("genero");
+  const inputMatricula = document.getElementById("matricula");
+  const inputValorConsulta = document.getElementById("valorConsulta");
+  const inputDescripcion = document.getElementById("descripcion");
+  const inputImagen = document.getElementById("imagen");
 
   // Obras sociales
   const checkOsde = document.getElementById("osde");
   const checkPami = document.getElementById("pami");
   const checkIoma = document.getElementById("ioma");
 
-  // --- Llenar formulario con datos existentes ---
-  if (inputId) {
-  inputId.value = medicoAEditar.id || "";
-}
-
-  inputMatricula.value = medicoAEditar.matricula || "";
+  // --- Llenar formulario con datos existentes ---  
   inputNombre.value = medicoAEditar.nombre || "";
   inputApellido.value = medicoAEditar.apellido || "";
   inputEspecialidad.value = medicoAEditar.especialidad || "";
+  inputMatricula.value = medicoAEditar.matricula || "";
   inputDescripcion.value = medicoAEditar.descripcion || "";
   inputValorConsulta.value = medicoAEditar.valorConsulta || "";
-
-  // Imagen: usar nueva o vieja propiedad
-  inputImagen.value = medicoAEditar.imagen || medicoAEditar.imagenFinal || "";
-
   // Género
   Array.from(inputGenero).forEach(
     (radio) => (radio.checked = radio.value === medicoAEditar.genero)
   );
+
+  // Imagen: usar nueva o vieja propiedad
+  inputImagen.value = medicoAEditar.imagen || medicoAEditar.imagenFinal || "";
 
   // Obras sociales (IDs numéricos)
   checkOsde.checked = medicoAEditar.obrasSociales?.includes(1);
@@ -77,15 +69,13 @@ export function abrirModalEditarMedico(id) {
     }
 
     // Actualizar objeto en memoria
-    medicoAEditar.id = Number(inputId.value);
-    medicoAEditar.matricula = inputMatricula.value.trim();
     medicoAEditar.nombre = inputNombre.value.trim();
     medicoAEditar.apellido = inputApellido.value.trim();
     medicoAEditar.especialidad = inputEspecialidad.value.trim();
-    medicoAEditar.genero =
-      Array.from(inputGenero).find((r) => r.checked)?.value || "";
-    medicoAEditar.descripcion = inputDescripcion.value.trim();
+    medicoAEditar.genero = Array.from(inputGenero).find((r) => r.checked)?.value || "";
+    medicoAEditar.matricula = inputMatricula.value.trim();
     medicoAEditar.valorConsulta = parseFloat(inputValorConsulta.value) || 0;
+    medicoAEditar.descripcion = inputDescripcion.value.trim();
     medicoAEditar.imagen = inputImagen.value.trim() || "../public/doctor.png";
 
     // Obras sociales actualizadas
@@ -96,6 +86,7 @@ export function abrirModalEditarMedico(id) {
 
     // Guardar cambios en LocalStorage
     localStorage.setItem("medicos", JSON.stringify(medicos));
+    alert("✅ Cambios guardados correctamente.");
 
     // Refrescar interfaz
     mostrarMedicosEnAlta();
@@ -110,6 +101,5 @@ export function abrirModalEditarMedico(id) {
     // Restaurar comportamiento original del formulario
     form.onsubmit = onSubmitOriginal;
 
-    alert("✅ Cambios guardados correctamente.");
   };
 }

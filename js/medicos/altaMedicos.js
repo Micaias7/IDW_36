@@ -1,8 +1,6 @@
 import { obtenerNuevoId } from "../../config/generadorId.js";
 import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
 
-
-
 export function inicializarAltaMedicos() {
   const formAlta = document.getElementById("altaMedicoForm");
   if (!formAlta) return;
@@ -12,7 +10,6 @@ export function inicializarAltaMedicos() {
 
     if (formAlta.dataset.editId) return;
 
-    
     const matricula = document.getElementById("matricula").value.trim();
     const nombre = document.getElementById("nombre").value.trim();
     const apellido = document.getElementById("apellido").value.trim();
@@ -21,7 +18,6 @@ export function inicializarAltaMedicos() {
     const descripcion = document.getElementById("descripcion").value.trim();
     const valorConsulta = parseFloat(document.getElementById("valorConsulta").value);
     const imagen = document.getElementById("imagen").value || "../public/doctor.png";
-
     const id = obtenerNuevoId("ultimoIdMed");
 
     if (!nombre || !apellido || !especialidad || isNaN(valorConsulta)) {
@@ -36,15 +32,15 @@ export function inicializarAltaMedicos() {
 
     const medico = {
       id,
-      matricula,
       nombre,
       apellido,
       especialidad,
       genero,
-      descripcion,
-      obrasSociales,
+      matricula,
       valorConsulta,
-      imagen,
+      obrasSociales,
+      descripcion,
+      imagen
     };
 
     const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
