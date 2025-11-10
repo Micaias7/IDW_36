@@ -1,8 +1,0 @@
-hacer CRUD 
-En obras sociales:
-• id: número identificador,
-• Nombre: string,
-• Descripción: string.
-
-
-La visualizacion de los datos en el panel administrador se maneja desde la funcion cargarSeccion que esta en panel.js
