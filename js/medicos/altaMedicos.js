@@ -40,14 +40,14 @@ export function inicializarAltaMedicos() {
 
     const medico = {
       id,
-      matricula,
       nombre,
       apellido,
       especialidad,
       genero,
-      descripcion,
-      obrasSociales,
+      matricula,
       valorConsulta,
+      obrasSociales,
+      descripcion,
       imagenFinal
     };
 
@@ -60,5 +60,3 @@ export function inicializarAltaMedicos() {
     formAlta.reset();
   });
 }
-// Ejecutar la función al cargar la página
-// inicializarAltaMedicos();
