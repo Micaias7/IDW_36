@@ -1,6 +1,7 @@
 import { medicosIniciales } from "./medicosIniciales.js";
 import { especialidadesIniciales } from "./especialidadesIniciales.js";
-import { obrasSocialesIniciales } from "./obrasSocialesIniciales.js"
+import { obrasSocialesIniciales } from "./obrasSocialesIniciales.js";
+import { turnosIniciales } from "./turnosIniciales.js";
 
 export const inicializarMedicos = () => {
   if (!localStorage.getItem("medicos")) {
@@ -39,5 +40,18 @@ export const inicializarObrasSociales = () => {
       : 0;
     
     localStorage.setItem("ultimoIdOS", ultimoIdOS.toString());
+  }
+};
+
+export const inicializarTurnos = () => {
+  if (!localStorage.getItem("turnos")) {
+    localStorage.setItem("turnos", JSON.stringify(turnosIniciales));
+    
+    const ultimoIdTurno = 
+      turnosIniciales.length > 0
+      ? Math.max(...turnosIniciales.map(t => t.id))
+      : 0;
+    
+    localStorage.setItem("ultimoIdTurno", ultimoIdTurno.toString());
   }
 };

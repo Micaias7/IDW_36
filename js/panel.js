@@ -72,6 +72,12 @@ async function cargarSeccion(seccion) {
             .then(mod2 => mod2.mostrarObrasSociales())
             .catch(err => console.error(err));
         };
+        if (seccion === "turnos" && mod.inicializarAltaTurnos) {
+          mod.inicializarAltaTurnos();
+          import("./turnos/mostrarTurnos.js")
+            .then(mod2 => mod2.mostrarTurnos())
+            .catch(err => console.error(err));
+        };
       })
       .catch(err => console.error(`Error al cargar módulo de ${seccion}:`, err));
 

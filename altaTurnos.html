@@ -1,0 +1,64 @@
+<section class="my-5 p-4 rounded-3 text-center">
+  <h2 id="tituloTurno" class="text-center mb-4">Alta de Agenda de Turnos</h2>
+
+  <form id="altaTurnoForm" class="border rounded p-4 bg-light shadow-sm mx-auto text-start" style="max-width: 600px;">
+    
+    <div class="mb-3 row align-items-center">
+      <label for="turnoMedico" class="col-sm-4 col-form-label text-sm-end">Médico:</label>
+      <div class="col-sm-8">
+        <select id="turnoMedico" name="turnoMedico" class="form-select" required>
+          <option value="" selected disabled>Seleccione un médico...</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="mb-3 row align-items-center">
+      <label for="turnoFecha" class="col-sm-4 col-form-label text-sm-end">Fecha:</label>
+      <div class="col-sm-8">
+        <input type="date" id="turnoFecha" name="turnoFecha" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="mb-3 row align-items-center">
+      <label for="turnoHora" class="col-sm-4 col-form-label text-sm-end">Hora:</label>
+      <div class="col-sm-8">
+        <input type="time" id="turnoHora" name="turnoHora" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="mb-3 row align-items-center">
+      <div class="col-sm-8 offset-sm-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="turnoDisponible" name="turnoDisponible" checked>
+          <label class="form-check-label" for="turnoDisponible">
+            Turno Disponible
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button id="botonGuardarTurno" type="submit" class="btn btn-primary px-5">Crear Turno</button>
+    </div>
+  </form>
+</section>
+
+<section class="my-5 p-4 rounded-3 text-center">
+  <div class="container">
+    <table class="table table-hover table-sm caption-top">
+      <caption>Agenda de Turnos</caption>
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Médico</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>
+          <th scope="col">Disponible</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="listaDeTurnos">
+        </tbody>
+    </table>
+  </div>
+</section>

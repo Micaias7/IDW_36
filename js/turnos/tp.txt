@@ -1,8 +1,0 @@
-CRUD de Turnos
-En Turnos:
- - id: número identificador
- - Médico: identificador de Médico
- - Fecha y Hora,
- - Disponible: booleano
-
-La visualizacion de los datos en el panel administrador se maneja desde la funcion cargarSeccion que esta en panel.js
