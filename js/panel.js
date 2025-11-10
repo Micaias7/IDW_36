@@ -22,9 +22,17 @@ async function cargarSeccion(seccion) {
       archivo = "altaEspecialidades.html";
       scriptModulo = "./especialidades/altaEspecialidades.js";
       break;
+    case "obrasSociales":
+      archivo = "altaObrasSociales.html";
+      scriptModulo = "./obrasSociales/altaObrasSociales.js";
+      break;
     case "turnos":
       archivo = "altaTurnos.html";
       scriptModulo = "./turnos/altaTurnos.js";
+      break;
+    case "reservas":
+      archivo = "verReservas.html";
+      scriptModulo = "./reservas/adminReservas.js";
       break;
     default:
       contenedor.innerHTML = `
@@ -61,6 +69,21 @@ async function cargarSeccion(seccion) {
           import("./especialidades/mostrarEspecialidades.js")
             .then(mod2 => mod2.mostrarEspecialidades())
             .catch(err => console.error(err));
+        };
+        if (seccion === "obrasSociales" && mod.inicializarAltaObrasSociales) {
+          mod.inicializarAltaObrasSociales();
+          import("./obrasSociales/mostrarObrasSociales.js")
+            .then(mod2 => mod2.mostrarObrasSociales())
+            .catch(err => console.error(err));
+        };
+        if (seccion === "turnos" && mod.inicializarAltaTurnos) {
+          mod.inicializarAltaTurnos();
+          import("./turnos/mostrarTurnos.js")
+            .then(mod2 => mod2.mostrarTurnos())
+            .catch(err => console.error(err));
+        };
+        if (seccion === "reservas" && mod.mostrarReservas) {
+          mod.mostrarReservas();
         };
       })
       .catch(err => console.error(`Error al cargar módulo de ${seccion}:`, err));
