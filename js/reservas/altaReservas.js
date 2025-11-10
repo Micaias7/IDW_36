@@ -80,7 +80,7 @@ function actualizarCostoResumen() {
   costoTotalCalculado.textContent = valorTotalCalculado.toFixed(2);
 
   resumenCosto.style.display = "block";
-}
+};
 
 selectEspecialidad.addEventListener("change", (e) => {
   const especialidadId = e.target.value;
@@ -102,7 +102,7 @@ selectEspecialidad.addEventListener("change", (e) => {
     selectMedico.innerHTML = '<option value="" selected disabled>No hay médicos para esta especialidad</option>';
     selectMedico.disabled = true;
     return;
-  }
+  };
 
   medicosFiltrados.forEach(med => {
     const option = document.createElement("option");
@@ -128,7 +128,7 @@ selectMedico.addEventListener("change", (e) => {
     selectTurno.innerHTML = '<option value="" selected disabled>No hay turnos disponibles para este médico</option>';
     selectTurno.disabled = true;
     return;
-  }
+  };
 
   turnosFiltrados.sort((a, b) => new Date(`${a.fecha}T${a.hora}`) - new Date(`${b.fecha}T${b.hora}`));
 
@@ -157,7 +157,7 @@ formReserva.addEventListener("submit", (e) => {
   if (!medicoSeleccionado || !turnoSeleccionado) {
     alert("Debe seleccionar una especialidad, un médico y un turno.");
     return;
-  }
+  };
   
   const dni = document.getElementById("inputDNI").value;
   const nombre = document.getElementById("inputNombre").value;
@@ -196,7 +196,7 @@ formReserva.addEventListener("submit", (e) => {
   } catch (error) {
     console.error("Error al guardar la reserva:", error);
     mensajeReserva.innerHTML = `<div class="alert alert-danger">Error: No se pudo completar la reserva. ${error.message}</div>`;
-  }
+  };
 });
 
 function mostrarConfirmacion(reserva) {
@@ -222,7 +222,7 @@ function mostrarConfirmacion(reserva) {
       <a href="index.html" class="btn btn-secondary">Volver al Inicio</a>
     </div>
   `;
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarEspecialidades();

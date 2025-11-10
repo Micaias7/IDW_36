@@ -32,7 +32,7 @@ async function cargarSeccion(seccion) {
       break;
     case "reservas":
       archivo = "verReservas.html";
-      scriptModulo = "./reservas/adminReservas.js";
+      scriptModulo = "./reservas/mostrarReservas.js";
       break;
     default:
       contenedor.innerHTML = `

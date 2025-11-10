@@ -26,4 +26,4 @@ export function inicializarAltaEspecialidades() {
     form.reset();
     alert("Especialidad agregada correctamente.");
   });
-}
+};

@@ -4,68 +4,20 @@ import { obrasSocialesIniciales } from "./obrasSocialesIniciales.js";
 import { turnosIniciales } from "./turnosIniciales.js";
 import { reservasIniciales } from "./reservasIniciales.js";
 
-export const inicializarMedicos = () => {
-  if (!localStorage.getItem("medicos")) {
-    localStorage.setItem("medicos", JSON.stringify(medicosIniciales));
+const inicializarEntidad = (clave, datosIniciales, claveUltimoId) => {
+  if (!localStorage.getItem(clave)) {
+    localStorage.setItem(clave, JSON.stringify(datosIniciales));
 
-    // Si el array está vacío, el último ID será 0
-    const ultimoId =
-      medicosIniciales.length > 0
-        ? Math.max(...medicosIniciales.map(m => m.id))
-        : 0;
-
-    localStorage.setItem("ultimoIdMed", ultimoId.toString());
-  }
-};
-
-export const inicializarEspecialidades = () => {
-  if (!localStorage.getItem("especialidades")) {
-    localStorage.setItem("especialidades", JSON.stringify(especialidadesIniciales));
-
-    const ultimoIdEsp =
-      especialidadesIniciales.length > 0
-        ? Math.max(...especialidadesIniciales.map(e => e.id))
-        : 0;
-
-    localStorage.setItem("ultimoIdEsp", ultimoIdEsp.toString());
-  }
-};
-
-export const inicializarObrasSociales = () => {
-  if (!localStorage.getItem("obrasSociales")) {
-    localStorage.setItem("obrasSociales", JSON.stringify(obrasSocialesIniciales));
-    
-    const ultimoIdOS = 
-      obrasSocialesIniciales.length > 0
-      ? Math.max(...obrasSocialesIniciales.map(o => o.id))
+    const ultimoId = datosIniciales.length > 0
+      ? Math.max(...datosIniciales.map(e => e.id))
       : 0;
-    
-    localStorage.setItem("ultimoIdOS", ultimoIdOS.toString());
+
+    localStorage.setItem(claveUltimoId, ultimoId.toString());
   }
 };
 
-export const inicializarTurnos = () => {
-  if (!localStorage.getItem("turnos")) {
-    localStorage.setItem("turnos", JSON.stringify(turnosIniciales));
-    
-    const ultimoIdTurno = 
-      turnosIniciales.length > 0
-      ? Math.max(...turnosIniciales.map(t => t.id))
-      : 0;
-    
-    localStorage.setItem("ultimoIdTurno", ultimoIdTurno.toString());
-  }
-};
-
-export const inicializarReservas = () => {
-  if (!localStorage.getItem("reservas")) {
-    localStorage.setItem("reservas", JSON.stringify(reservasIniciales));
-    
-    const ultimoIdReserva = 
-      reservasIniciales.length > 0
-      ? Math.max(...reservasIniciales.map(r => r.id))
-      : 0;
-    
-    localStorage.setItem("ultimoIdReserva", ultimoIdReserva.toString());
-  }
-};
+export const inicializarMedicos = () => inicializarEntidad("medicos", medicosIniciales, "ultimoIdMed");
+export const inicializarEspecialidades = () => inicializarEntidad("especialidades", especialidadesIniciales, "ultimoIdEsp");
+export const inicializarObrasSociales = () => inicializarEntidad("obrasSociales", obrasSocialesIniciales, "ultimoIdOS");
+export const inicializarTurnos = () => inicializarEntidad("turnos", turnosIniciales, "ultimoIdTurno");
+export const inicializarReservas = () => inicializarEntidad("reservas", reservasIniciales, "ultimoIdReserva");

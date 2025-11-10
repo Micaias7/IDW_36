@@ -1,8 +1,5 @@
-import { inicializarReservas } from '../../config/inicializarLocalStorage.js';
-import { inicializarEspecialidades } from '../../config/inicializarLocalStorage.js';
-import { inicializarMedicos } from '../../config/inicializarLocalStorage.js';
-import { inicializarTurnos } from '../../config/inicializarLocalStorage.js';
-import { inicializarObrasSociales } from '../../config/inicializarLocalStorage.js';
+import { inicializarReservas, inicializarEspecialidades, inicializarMedicos, inicializarTurnos, inicializarObrasSociales } from '../../config/inicializarLocalStorage.js';
+import { eliminarReserva } from './eliminarReserva.js';
 
 inicializarReservas();
 inicializarEspecialidades();
@@ -25,17 +22,13 @@ export const mostrarReservas = () => {
   if (reservas.length === 0) {
     tbody.innerHTML = "<tr><td colspan='9'>No hay reservas registradas.</td></tr>";
     return;
-  }
+  };
 
   reservas.forEach(reserva => {
-    const turno = turnos.find(t => t.id === reserva.turnoId);
-    
-    const medico = turno ? medicos.find(m => m.id === turno.medicoId) : null;
-    
+    const turno = turnos.find(t => t.id === reserva.turnoId);    
+    const medico = turno ? medicos.find(m => m.id === turno.medicoId) : null;    
     const especialidad = especialidades.find(e => e.id === reserva.especialidadId);
-
     const obraSocial = obrasSociales.find(os => os.id === reserva.obraSocialId);
-
     const paciente = `${reserva.nombre} ${reserva.apellido}`;
     const espNombre = especialidad ? especialidad.nombre : "N/A";
     const medNombre = medico ? `${medico.genero} ${medico.apellido}` : "N/A";
@@ -65,32 +58,3 @@ export const mostrarReservas = () => {
     });
   });
 };
-
-
-// ELIMINAR RESERVA
-function eliminarReserva(id) {
-  const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
-  const reservaEliminada = reservas.find(r => r.id === Number(id));
-  
-  if (!reservaEliminada) {
-    alert("No se encontró la reserva.");
-    return;
-  }
-
-  if (confirm(`¿Seguro que querés eliminar la reserva de ${reservaEliminada.nombre} ${reservaEliminada.apellido}?`)) {
-    
-    const nuevasReservas = reservas.filter(r => r.id !== Number(id));
-    localStorage.setItem("reservas", JSON.stringify(nuevasReservas));
-
-    const turnos = JSON.parse(localStorage.getItem("turnos")) || [];
-    const turnoAsociado = turnos.find(t => t.id === reservaEliminada.turnoId);
-    
-    if (turnoAsociado) {
-      turnoAsociado.disponible = true;
-      localStorage.setItem("turnos", JSON.stringify(turnos));
-    }
-
-    mostrarReservas();
-    alert("Reserva eliminada. El turno ha sido liberado.");
-  }
-}

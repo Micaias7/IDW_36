@@ -51,4 +51,4 @@ export function inicializarAltaTurnos() {
     
     document.getElementById("turnoDisponible").checked = true;
   });
-}
+};
