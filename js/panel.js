@@ -30,6 +30,10 @@ async function cargarSeccion(seccion) {
       archivo = "altaTurnos.html";
       scriptModulo = "./turnos/altaTurnos.js";
       break;
+    case "reservas":
+      archivo = "verReservas.html";
+      scriptModulo = "./reservas/adminReservas.js";
+      break;
     default:
       contenedor.innerHTML = `
         <h2>Bienvenido al Panel de Control</h2>
@@ -77,6 +81,9 @@ async function cargarSeccion(seccion) {
           import("./turnos/mostrarTurnos.js")
             .then(mod2 => mod2.mostrarTurnos())
             .catch(err => console.error(err));
+        };
+        if (seccion === "reservas" && mod.mostrarReservas) {
+          mod.mostrarReservas();
         };
       })
       .catch(err => console.error(`Error al cargar módulo de ${seccion}:`, err));

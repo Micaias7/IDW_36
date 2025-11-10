@@ -12,8 +12,9 @@ export function inicializarAltaObrasSociales() {
 
     const nombre = document.getElementById("nombreObraSocial").value.trim();
     const descripcion = document.getElementById("descripcionObraSocial").value.trim();
+    const porcentaje = document.getElementById("porcentajeOS").value;
     
-    if (!nombre || !descripcion) {
+    if (!nombre || !descripcion || porcentaje === "") {
       alert("Nombre y descripción son obligatorios.");
       return;
     }

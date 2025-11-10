@@ -11,11 +11,13 @@ export function abrirEditarObraSocial(id) {
   const form = document.getElementById("altaObraSocialForm");
   const inputNombre = document.getElementById("nombreObraSocial");
   const inputDesc = document.getElementById("descripcionObraSocial");
+  const inputPorcentaje = document.getElementById("porcentajeOS")
   const botonGuardar = document.getElementById("botonGuardarOS");
   const titulo = document.getElementById("tituloOS");
   
   inputNombre.value = os.nombre;
   inputDesc.value = os.descripcion;
+  inputPorcentaje.value = os.porcentaje;
   
   form.dataset.editId = id; 
   if (botonGuardar) botonGuardar.textContent = "Actualizar Obra Social";
@@ -34,8 +36,9 @@ export function abrirEditarObraSocial(id) {
     
     osAEditar.nombre = inputNombre.value.trim();
     osAEditar.descripcion = inputDesc.value.trim();
+    osAEditar.porcentaje = Number(inputPorcentaje.value);
 
-    if (!osAEditar.nombre || !osAEditar.descripcion) {
+    if (!osAEditar.nombre || !osAEditar.descripcion || inputPorcentaje.value === "") {
       alert("Nombre y descripción son obligatorios.");
       return;
     }

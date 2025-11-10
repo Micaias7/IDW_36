@@ -2,6 +2,7 @@ import { medicosIniciales } from "./medicosIniciales.js";
 import { especialidadesIniciales } from "./especialidadesIniciales.js";
 import { obrasSocialesIniciales } from "./obrasSocialesIniciales.js";
 import { turnosIniciales } from "./turnosIniciales.js";
+import { reservasIniciales } from "./reservasIniciales.js";
 
 export const inicializarMedicos = () => {
   if (!localStorage.getItem("medicos")) {
@@ -53,5 +54,18 @@ export const inicializarTurnos = () => {
       : 0;
     
     localStorage.setItem("ultimoIdTurno", ultimoIdTurno.toString());
+  }
+};
+
+export const inicializarReservas = () => {
+  if (!localStorage.getItem("reservas")) {
+    localStorage.setItem("reservas", JSON.stringify(reservasIniciales));
+    
+    const ultimoIdReserva = 
+      reservasIniciales.length > 0
+      ? Math.max(...reservasIniciales.map(r => r.id))
+      : 0;
+    
+    localStorage.setItem("ultimoIdReserva", ultimoIdReserva.toString());
   }
 };

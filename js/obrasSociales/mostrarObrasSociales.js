@@ -22,6 +22,7 @@ export const mostrarObrasSociales = () => {
       <th scope="row">${os.id}</th>
       <td>${os.nombre}</td>
       <td>${os.descripcion}</td>
+      <td>${os.porcentaje}%</td>
       <td>
         <i class="bi bi-pencil-square text-primary" title="Editar" data-id="${os.id}" style="cursor:pointer"></i> |
         <i class="bi bi-trash text-danger" title="Borrar" data-id="${os.id}" style="cursor:pointer"></i>

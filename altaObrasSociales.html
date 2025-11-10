@@ -17,6 +17,13 @@
       </div>
     </div>
 
+    <div class="mb-3 row align-items-center">
+      <label for="porcentajeOS" class="col-sm-4 col-form-label text-sm-end">Porcentaje (%):</label>
+      <div class="col-sm-8">
+        <input type="number" id="porcentajeOS" name="porcentajeOS" class="form-control" min="0" max="100" placeholder="Ej: 30" required>
+      </div>
+    </div>
+
     <div class="text-center mt-4">
       <button id="botonGuardarOS" type="submit" class="btn btn-primary px-5">Registrar Obra Social</button>
     </div>
@@ -32,7 +39,7 @@
           <th scope="col">ID</th>
           <th scope="col">Nombre</th>
           <th scope="col">Descripción</th>
-          <th scope="col">Acciones</th>
+          <th scope="col">Porcentaje</th> <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody id="listaDeObrasSociales">

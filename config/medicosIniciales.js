@@ -5,7 +5,8 @@ export const medicosIniciales = [
     apellido: "Batista",
     especialidad: "Neurología",
     genero: "Dr.",
-    imagenFinal: "public/doc3.jpg"
+    imagenFinal: "public/doc3.jpg",
+    valorDeConsulta: 7000
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ export const medicosIniciales = [
     apellido: "Fernández",
     especialidad: "Traumatología",
     genero: "Dra.",
-    imagenFinal: "public/doc2.jpg"
+    imagenFinal: "public/doc2.jpg",
+    valorDeConsulta: 7000
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ export const medicosIniciales = [
     apellido: "López",
     especialidad: "Gastroenterología",
     genero: "Dr.",
-    imagenFinal: "public/doc.png"
+    imagenFinal: "public/doc.png",
+    valorDeConsulta: 7000
   },
   {
     id: 4,
@@ -29,7 +32,8 @@ export const medicosIniciales = [
     apellido: "Jackson",
     especialidad: "Cardiología",
     genero: "Dr.",
-    imagenFinal: "public/doc4.jpg"
+    imagenFinal: "public/doc4.jpg",
+    valorDeConsulta: 7000
   },
   {
     id: 5,
@@ -37,7 +41,8 @@ export const medicosIniciales = [
     apellido: "Borges",
     especialidad: "Dermatología",
     genero: "Dr.",
-    imagenFinal: "public/doc5.jpg"
+    imagenFinal: "public/doc5.jpg",
+    valorDeConsulta: 7000
   },
   {
     id: 6,
@@ -45,6 +50,7 @@ export const medicosIniciales = [
     apellido: "Liotta",
     especialidad: "Pediatría",
     genero: "Dra.",
-    imagenFinal: "public/doc6.jpg"
+    imagenFinal: "public/doc6.jpg",
+    valorDeConsulta: 7000
   }
 ];
