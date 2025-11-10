@@ -2,7 +2,7 @@
   <h2 id="titulo" class="text-center mb-4">Alta de Médico</h2>
 
   <form id="altaMedicoForm" class="border rounded p-4 bg-light shadow-sm mx-auto text-start">
-
+    
     <div class="mb-3 row align-items-center">
       <label for="nombre" class="col-sm-3 col-form-label text-sm-end">Nombre:</label>
       <div class="col-sm-9">
@@ -23,7 +23,7 @@
         <input type="text" id="especialidad" name="especialidad" class="form-control" required>
       </div>
     </div>
-      
+
     <div class="mb-3 row align-items-center">
       <label class="col-sm-3 col-form-label text-sm-end">Doctor/a:</label>
       <div class="col-sm-9">
@@ -36,22 +36,22 @@
           <label class="form-check-label" for="dra">Dra.</label>
         </div>
       </div>
-    </div>      
-  
+    </div>
+
     <div class="mb-3 row align-items-center">
       <label for="matricula" class="col-sm-3 col-form-label text-sm-end">Matrícula profesional:</label>
       <div class="col-sm-9">
         <input type="number" id="matricula" name="matricula" class="form-control" required>
       </div>
     </div>
-      
+
     <div class="mb-3 row align-items-center">
       <label for="descripcion" class="col-sm-3 col-form-label text-sm-end">Descripción:</label>
       <div class="col-sm-9">
         <textarea id="descripcion" name="descripcion" class="form-control" rows="3" placeholder="Breve presentación del profesional"></textarea>
-        </div>
-        </div>
-            
+      </div>
+    </div>
+
     <div class="mb-3 row">
       <label class="col-sm-3 col-form-label text-sm-end">Obras sociales:</label>
       <div class="col-sm-9">
@@ -76,7 +76,7 @@
               <label class="form-check-label" for="ioma">IOMA</label>
             </div>
           </div>
-      
+        
           <div class="col">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="4" id="swiss">
@@ -101,20 +101,23 @@
       </div>
     </div>
 
-    <div class="mb-3 row align-items-center">
-      <label for="imagen" class="col-sm-3 col-form-label text-sm-end">URL de imagen:</label>
-      <div class="col-sm-9">
-        <input type="url" id="imagen" name="imagen" class="form-control" placeholder="https://ejemplo.com/foto.jpg">
-      </div>
-    </div>
-      
+    <!-- Agregado: opción para subir imagen desde la computadora -->
+    <!-- Permite al usuario elegir un archivo de imagen local -->
+    <!-- Si se selecciona, esa imagen se convertirá a Base64 automáticamente -->
+    <div class="mb-3 row align-items-center"> <!-- <-- agregado -->
+      <label for="imagenArchivo" class="col-sm-3 col-form-label text-sm-end">Subir imagen:</label> <!-- <-- agregado -->
+      <div class="col-sm-9"> <!-- <-- agregado -->
+        <input type="file" id="imagenArchivo" name="imagenArchivo" class="form-control" accept="image/*"> <!-- <-- agregado -->
+      </div> <!-- <-- agregado -->
+    </div> <!-- <-- agregado -->
+
     <div class="mb-3 row align-items-center">
       <label for="valorConsulta" class="col-sm-3 col-form-label text-sm-end">Valor de consulta ($):</label>
       <div class="col-sm-9">
         <input type="number" step="0.01" id="valorConsulta" name="valorConsulta" class="form-control" required>
       </div>
     </div>
-      
+
     <div class="text-center mt-4">
       <button id="botonGuardarAlta" type="submit" class="btn btn-primary px-5">Registrar Médico</button>
     </div>

@@ -1,4 +1,5 @@
 import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
+import { convertirArchivoABase64 } from "../../config/convertidorBase64.js"
 
 export function abrirModalEditarMedico(id) {
   const confirmar = confirm(`¿Ingresar en modo Edición?`);
@@ -18,16 +19,15 @@ export function abrirModalEditarMedico(id) {
   const inputEspecialidad = document.getElementById("especialidad");
   const inputGenero = document.getElementsByName("genero");
   const inputMatricula = document.getElementById("matricula");
-  const inputValorConsulta = document.getElementById("valorConsulta");
   const inputDescripcion = document.getElementById("descripcion");
-  const inputImagen = document.getElementById("imagen");
+  const inputValorConsulta = document.getElementById("valorConsulta");
 
   // Obras sociales
   const checkOsde = document.getElementById("osde");
   const checkPami = document.getElementById("pami");
   const checkIoma = document.getElementById("ioma");
 
-  // --- Llenar formulario con datos existentes ---  
+    // Llenar formulario con datos existentes
   inputNombre.value = medicoAEditar.nombre || "";
   inputApellido.value = medicoAEditar.apellido || "";
   inputEspecialidad.value = medicoAEditar.especialidad || "";
@@ -53,13 +53,13 @@ export function abrirModalEditarMedico(id) {
 
   if (botonGuardar) botonGuardar.textContent = "Guardar Cambios";
   if (tituloEdicion) tituloEdicion.textContent = "Edición de Médico";
-
+  
   form.dataset.editId = id;
-
+  
   const onSubmitOriginal = form.onsubmit;
-
-  // --- Sobrescribir comportamiento del submit temporalmente ---
-  form.onsubmit = (e) => {
+  
+  // --- Sobrescribir comportamiento del submit temporalmente ---    
+  form.onsubmit = async (e) => {
     e.preventDefault();
 
     // Validar campos obligatorios
@@ -76,15 +76,20 @@ export function abrirModalEditarMedico(id) {
     medicoAEditar.matricula = inputMatricula.value.trim();
     medicoAEditar.valorConsulta = parseFloat(inputValorConsulta.value) || 0;
     medicoAEditar.descripcion = inputDescripcion.value.trim();
-    medicoAEditar.imagen = inputImagen.value.trim() || "../public/doctor.png";
 
+    let imagenFinalNueva = medicoAEditar.imagenFinal;    
+    const archivo = document.getElementById("imagenArchivo").files[0];
+    if (archivo) {
+      imagenFinalNueva = await convertirArchivoABase64(archivo);
+    };
+    medicoAEditar.imagenFinal = imagenFinalNueva;
+    
     // Obras sociales actualizadas
     medicoAEditar.obrasSociales = [];
     if (checkOsde.checked) medicoAEditar.obrasSociales.push(1);
     if (checkPami.checked) medicoAEditar.obrasSociales.push(2);
     if (checkIoma.checked) medicoAEditar.obrasSociales.push(3);
 
-    // Guardar cambios en LocalStorage
     localStorage.setItem("medicos", JSON.stringify(medicos));
     alert("✅ Cambios guardados correctamente.");
 
@@ -100,6 +105,5 @@ export function abrirModalEditarMedico(id) {
 
     // Restaurar comportamiento original del formulario
     form.onsubmit = onSubmitOriginal;
-
   };
-}
+};
