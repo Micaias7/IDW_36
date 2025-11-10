@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitar Turno - IDW S.A</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <header class="py-2 text-center">
+    <nav class="navbar navbar-expand-md">
+      <div class="container-fluid">
+        <img src="public/loguito.png" alt="Logo" class="img-fluid" style="max-width:300px;">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse m-2" id="navbarToggler">
+          <ul class="navbar-nav mx-auto gap-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="informacion.html">Información Institucional</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+            <li class="nav-item" id="linkAltaMedicos"><a class="nav-link fs-6" href="panel.html">Panel de Control</a>
+            </li>
+            <li class="nav-item" id="navLogin"><a class="nav-link fs-6" href="login.html">Iniciar Sesion</a></li>
+            <li class="nav-item" id="navLogout"><a class="nav-link fs-6" href="#">Cerrar Sesion</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <div class="mt-5 mb-4 text-center">
+      <h1>Agende aquí su turno</h1>
+    </div>
+
+    <section class="mx-auto" style="max-width: 800px;">
+
+      <div id="mensajeReserva" class="my-3"></div>
+
+      <form id="formReserva" class="p-4 border rounded-3 bg-light shadow-sm">
+
+        <h3 class="fs-5 border-bottom pb-2 mb-3">1. Seleccione la prestación</h3>
+
+        <div class="mb-3">
+          <label for="selectEspecialidad" class="form-label">Especialidad:</label>
+          <select id="selectEspecialidad" class="form-select" required>
+            <option value="" selected disabled>Elija una especialidad...</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="selectMedico" class="form-label">Médico:</label>
+          <select id="selectMedico" class="form-select" required disabled>
+            <option value="" selected disabled>Primero elija una especialidad</option>
+          </select>
+        </div>
+
+        <h3 class="fs-5 border-bottom pb-2 mb-3 mt-4">2. Seleccione el turno</h3>
+
+        <div class="mb-3">
+          <label for="selectTurno" class="form-label">Horarios Disponibles:</label>
+          <select id="selectTurno" class="form-select" required disabled>
+            <option value="" selected disabled>Primero elija un médico</option>
+          </select>
+        </div>
+
+        <h3 class="fs-5 border-bottom pb-2 mb-3 mt-4">3. Complete sus datos</h3>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="inputDNI" class="form-label">DNI/Documento:</label>
+            <input type="text" id="inputDNI" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="selectObraSocial" class="form-label">Obra Social:</label>
+            <select id="selectObraSocial" class="form-select" required>
+              <option value="" selected disabled>Elija una obra social...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="inputNombre" class="form-label">Nombre:</label>
+            <input type="text" id="inputNombre" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="inputApellido" class="form-label">Apellido:</label>
+            <input type="text" id="inputApellido" class="form-control" required>
+          </div>
+        </div>
+
+        <div id="resumenCosto" class="alert alert-info mt-3" style="display: none;">
+          <div>Precio base: $<span id="costoBase">0</span></div>
+          <div>Descuento (<span id="nombreDescuento">Particular</span>): - $<span id="montoDescuento">0</span></div>
+          <hr>
+          <strong>Costo Final: $<span id="costoTotalCalculado">0</span></strong>
+        </div>
+
+        <div class="text-center mt-4">
+
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary btn-lg px-5">Confirmar Reserva</button>
+          </div>
+
+      </form>
+    </section>
+  </main>
+
+  <footer class="d-flex justify-content-center fw-bold py-3">
+    <p>&copy; 2025 IDW grupo 36</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/controlUsuarios.js" type="module"></script>
+  <script src="js/reservas/reservas.js" type="module"></script>
+</body>
+
+</html>
