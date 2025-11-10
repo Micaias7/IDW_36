@@ -66,7 +66,7 @@ export function abrirModalEditarMedico(id) {
     medicoAEditar.especialidad = inputEspecialidad.value.trim();
     medicoAEditar.genero = Array.from(inputGenero).find((r) => r.checked)?.value || "";
     medicoAEditar.matricula = inputMatricula.value.trim();
-    medicoAEditar.valorDeConsulta = parseFloat(inputValorConsulta.value) || 0;
+    medicoAEditar.valorDeConsulta = parseFloat(inputValorDeConsulta.value) || 0;
     medicoAEditar.descripcion = inputDescripcion.value.trim();
 
     let imagenFinalNueva = medicoAEditar.imagenFinal;    
