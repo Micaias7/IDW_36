@@ -41,7 +41,7 @@ export function abrirEditarObraSocial(id) {
     if (!osAEditar.nombre || !osAEditar.descripcion || inputPorcentaje.value === "") {
       alert("Nombre y descripción son obligatorios.");
       return;
-    }
+    };
 
     localStorage.setItem("obrasSociales", JSON.stringify(obrasSociales));
     

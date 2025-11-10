@@ -20,7 +20,9 @@
     <div class="mb-3 row align-items-center">
       <label for="especialidad" class="col-sm-3 col-form-label text-sm-end">Especialidad:</label>
       <div class="col-sm-9">
-        <input type="text" id="especialidad" name="especialidad" class="form-control" required>
+        <select id="especialidad" name="especialidad" class="form-select" required>
+          <option value="">Seleccione una especialidad</option>
+        </select>
       </div>
     </div>
 
@@ -56,47 +58,7 @@
       <label class="col-sm-3 col-form-label text-sm-end">Obras sociales:</label>
       <div class="col-sm-9">
         <div class="row row-cols-3 g-2" id="contenedorObrasSociales">
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="1" id="osde">
-              <label class="form-check-label" for="osde">OSDE</label>
-            </div>
-          </div>
 
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="2" id="pami">
-              <label class="form-check-label" for="pami">PAMI</label>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="3" id="ioma">
-              <label class="form-check-label" for="ioma">IOMA</label>
-            </div>
-          </div>
-        
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="4" id="swiss">
-              <label class="form-check-label" for="swiss">SWISS MEDICAL</label>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="5" id="medife">
-              <label class="form-check-label" for="medife">MEDIFE</label>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="6" id="iaps">
-              <label class="form-check-label" for="iaps">GALENO</label>
-            </div>
-          </div>
         </div>
       </div>
     </div>

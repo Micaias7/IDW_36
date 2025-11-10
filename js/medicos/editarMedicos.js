@@ -1,5 +1,5 @@
 import { mostrarMedicosEnAlta } from "./mostrarMedicos.js";
-import { convertirArchivoABase64 } from "../../config/convertidorBase64.js"
+import { convertirArchivoABase64 } from "../../config/convertidorBase64.js";
 
 export function abrirModalEditarMedico(id) {
   const confirmar = confirm(`¿Ingresar en modo Edición?`);
@@ -10,7 +10,7 @@ export function abrirModalEditarMedico(id) {
   if (!medicoAEditar) {
     alert("❌ Médico no encontrado.");
     return;
-  }
+  };
 
   const form = document.getElementById("altaMedicoForm");
   // --- Obtener los campos ---
@@ -20,12 +20,7 @@ export function abrirModalEditarMedico(id) {
   const inputGenero = document.getElementsByName("genero");
   const inputMatricula = document.getElementById("matricula");
   const inputDescripcion = document.getElementById("descripcion");
-  const inputValorConsulta = document.getElementById("valorConsulta");
-
-  // Obras sociales
-  const checkOsde = document.getElementById("osde");
-  const checkPami = document.getElementById("pami");
-  const checkIoma = document.getElementById("ioma");
+  const inputValorDeConsulta = document.getElementById("valorConsulta");
 
     // Llenar formulario con datos existentes
   inputNombre.value = medicoAEditar.nombre || "";
@@ -33,16 +28,16 @@ export function abrirModalEditarMedico(id) {
   inputEspecialidad.value = medicoAEditar.especialidad || "";
   inputMatricula.value = medicoAEditar.matricula || "";
   inputDescripcion.value = medicoAEditar.descripcion || "";
-  inputValorConsulta.value = medicoAEditar.valorConsulta || "";
+  inputValorDeConsulta.value = medicoAEditar.valorDeConsulta || "";
   // Género
   Array.from(inputGenero).forEach(
     (radio) => (radio.checked = radio.value === medicoAEditar.genero)
   );
 
-  // Obras sociales (IDs numéricos)
-  checkOsde.checked = medicoAEditar.obrasSociales?.includes(1);
-  checkPami.checked = medicoAEditar.obrasSociales?.includes(2);
-  checkIoma.checked = medicoAEditar.obrasSociales?.includes(3);
+  medicoAEditar.obrasSociales?.forEach((idOs) => {
+    const checkbox = document.getElementById(`os-${idOs}`);
+    if (checkbox) checkbox.checked = true;
+  });
 
   // --- Cambiar interfaz ---
   const botonGuardar = document.getElementById("botonGuardarAlta");
@@ -63,7 +58,7 @@ export function abrirModalEditarMedico(id) {
     if (!inputNombre.value || !inputApellido.value || !inputEspecialidad.value) {
       alert("Nombre, apellido y especialidad son obligatorios.");
       return;
-    }
+    };
 
     // Actualizar objeto en memoria
     medicoAEditar.nombre = inputNombre.value.trim();
@@ -71,7 +66,7 @@ export function abrirModalEditarMedico(id) {
     medicoAEditar.especialidad = inputEspecialidad.value.trim();
     medicoAEditar.genero = Array.from(inputGenero).find((r) => r.checked)?.value || "";
     medicoAEditar.matricula = inputMatricula.value.trim();
-    medicoAEditar.valorConsulta = parseFloat(inputValorConsulta.value) || 0;
+    medicoAEditar.valorDeConsulta = parseFloat(inputValorConsulta.value) || 0;
     medicoAEditar.descripcion = inputDescripcion.value.trim();
 
     let imagenFinalNueva = medicoAEditar.imagenFinal;    
@@ -81,11 +76,11 @@ export function abrirModalEditarMedico(id) {
     };
     medicoAEditar.imagenFinal = imagenFinalNueva;
     
-    // Obras sociales actualizadas
-    medicoAEditar.obrasSociales = [];
-    if (checkOsde.checked) medicoAEditar.obrasSociales.push(1);
-    if (checkPami.checked) medicoAEditar.obrasSociales.push(2);
-    if (checkIoma.checked) medicoAEditar.obrasSociales.push(3);
+    const obrasSeleccionadas = Array.from(
+      document.querySelectorAll("#contenedorObrasSociales input[type='checkbox']:checked")
+    ).map((chk) => parseInt(chk.value));
+
+    medicoAEditar.obrasSociales = obrasSeleccionadas;
 
     localStorage.setItem("medicos", JSON.stringify(medicos));
     alert("✅ Cambios guardados correctamente.");

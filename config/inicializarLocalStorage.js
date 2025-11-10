@@ -13,7 +13,7 @@ const inicializarEntidad = (clave, datosIniciales, claveUltimoId) => {
       : 0;
 
     localStorage.setItem(claveUltimoId, ultimoId.toString());
-  }
+  };
 };
 
 export const inicializarMedicos = () => inicializarEntidad("medicos", medicosIniciales, "ultimoIdMed");

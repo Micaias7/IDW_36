@@ -1,8 +1,10 @@
-import { inicializarMedicos } from "../../config/inicializarLocalStorage.js";
+import { inicializarEspecialidades, inicializarMedicos, inicializarObrasSociales } from "../../config/inicializarLocalStorage.js";
 import { eliminarMedico } from "./eliminarMedicos.js";
 import { abrirModalEditarMedico } from "./editarMedicos.js";
 
 inicializarMedicos();
+inicializarObrasSociales();
+inicializarEspecialidades();
 
 // =======================
 // Mostrar médicos en versión escritorio (página de inicio)
@@ -73,6 +75,7 @@ export const mostrarMedicosEnAlta = () => {
 
   tbody.innerHTML = "";
   const medicos = JSON.parse(localStorage.getItem("medicos")) || [];
+  const obrasSociales = JSON.parse(localStorage.getItem("obrasSociales")) || [];
 
   medicos.forEach((m) => {
     const tr = document.createElement("tr");
@@ -84,13 +87,14 @@ export const mostrarMedicosEnAlta = () => {
       <td>${
         m.obrasSociales && m.obrasSociales.length
           ? m.obrasSociales
-              .map((id) =>
-                id == 1 ? "OSDE" : id == 2 ? "PAMI" : id == 3 ? "IOMA" : "Desconocida"
-              )
+              .map(id => {
+                const os = obrasSociales.find(o => o.id === id);
+                return os ? os.nombre : "Desconocida";
+              })
               .join(", ")
           : "-"
       }</td>
-      <td>$${m.valorConsulta?.toFixed(2) || "-"}</td>
+      <td>$${m.valorDeConsulta?.toFixed(2) || "-"}</td>
       <td>${m.descripcion || "-"}</td>
       <td>
         <img src="${m.imagenFinal || '../public/doctor.png'}" 

@@ -1,4 +1,4 @@
-import { mostrarReservas } from "./mostrarReservas";
+import { mostrarReservas } from "./mostrarReservas.js";
 
 export function eliminarReserva(id) {
   const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
@@ -7,7 +7,7 @@ export function eliminarReserva(id) {
   if (!reservaEliminada) {
     alert("No se encontró la reserva.");
     return;
-  }
+  };
 
   if (confirm(`¿Seguro que querés eliminar la reserva de ${reservaEliminada.nombre} ${reservaEliminada.apellido}?`)) {
     

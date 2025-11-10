@@ -4,32 +4,28 @@ const clave = document.getElementById("clave");
 const mensaje = document.getElementById("mensaje");
 
 function mostrarMensaje(texto, tipo){
-    mensaje.innerHTML = `
-        <div class="col-md-6 col-lg-4">
-            <div class="alert alert-${tipo}">${texto}</div>
-        </div>`
-}
+  mensaje.innerHTML = `
+    <div class="col-md-6 col-lg-4">
+      <div class="alert alert-${tipo}">${texto}</div>
+    </div>`
+};
 
 formLogin.addEventListener("submit", function(event){
-    event.preventDefault();
+  event.preventDefault();
 
-    let usuarioInput = usuario.value.trim();
-    let claveInput = clave.value.trim();
+  let usuarioInput = usuario.value.trim();
+  let claveInput = clave.value.trim();
 
-    const isUsuario = usuarios.find(
-        u => u.usuario === usuarioInput && u.clave === claveInput
-    );
+  const isUsuario = usuarios.find(u => u.usuario === usuarioInput && u.clave === claveInput);
 
-    if(isUsuario){
-        sessionStorage.setItem("usuarioLogueado", usuarioInput);
-        if(usuarioInput === "admin"){
-            window.location.href = "panel.html"
-        } else {
-            window.location.href = "index.html"
-        }
-
+  if(isUsuario){
+    sessionStorage.setItem("usuarioLogueado", usuarioInput);
+    if(usuarioInput === "admin"){
+      window.location.href = "panel.html";
     } else {
-        mostrarMensaje(`Error en credenciales`, "danger")
-    }
-
-})
+      window.location.href = "index.html";
+    };
+  } else {
+    mostrarMensaje(`Error en credenciales`, "danger");
+  };
+});

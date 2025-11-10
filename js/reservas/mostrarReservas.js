@@ -1,5 +1,5 @@
 import { inicializarReservas, inicializarEspecialidades, inicializarMedicos, inicializarTurnos, inicializarObrasSociales } from '../../config/inicializarLocalStorage.js';
-import { eliminarReserva } from './eliminarReserva.js';
+import { eliminarReserva } from "./eliminarReservas.js";
 
 inicializarReservas();
 inicializarEspecialidades();

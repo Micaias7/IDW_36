@@ -14,7 +14,7 @@ export function inicializarAltaEspecialidades() {
     if (!nombre) {
       alert("El nombre de la especialidad es obligatorio.");
       return;
-    }
+    };
 
     const id = obtenerNuevoId("ultimoIdEsp");
     const especialidades = JSON.parse(localStorage.getItem("especialidades")) || [];

@@ -22,7 +22,7 @@ export function inicializarAltaObrasSociales() {
     const id = obtenerNuevoId("ultimoIdOS");
     const obrasSociales = JSON.parse(localStorage.getItem("obrasSociales")) || [];
     
-    obrasSociales.push({ id, nombre, descripcion });
+    obrasSociales.push({ id, nombre, descripcion, porcentaje });
     localStorage.setItem("obrasSociales", JSON.stringify(obrasSociales));
 
     mostrarObrasSociales();

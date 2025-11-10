@@ -3,5 +3,6 @@ export const obrasSocialesIniciales = [
   { id: 2, nombre: "Swiss Medical", descripcion: "Medicina prepaga líder", porcentaje: 25 },
   { id: 3, nombre: "Galeno", descripcion: "Cobertura médica nacional", porcentaje: 20 },
   { id: 4, nombre: "PAMI", descripcion: "Para jubilados y pensionados", porcentaje: 40 },
-  { id: 5, nombre: "Particular", descripcion: "Sin cobertura / Abona particular", porcentaje: 0 }
+  { id: 5, nombre: "Medifé", descripcion: "medicina prepaga con una amplia cartilla médica nacional", porcentaje: 25 },
+  { id: 6, nombre: "Particular", descripcion: "Sin cobertura / Abona particular", porcentaje: 0 }
 ];

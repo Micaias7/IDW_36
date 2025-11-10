@@ -1,34 +1,34 @@
 :root {
-    /* Colores */
-    --color-primario: #202020;
-    --color-secundario: #363636;
-    --color-secundario-claro: #1f9a86;
-    --color-fondo: #ffffff;
-    --color-base: #ced6da;
-    --color-texto-oscuro: black;
-    --color-texto-claro: white;
+  /* Colores */
+  --color-primario: #202020;
+  --color-secundario: #363636;
+  --color-secundario-claro: #1f9a86;
+  --color-fondo: #ffffff;
+  --color-base: #ced6da;
+  --color-texto-oscuro: black;
+  --color-texto-claro: white;
 
-    /* Tipografía */
-    --fuente-encabezados: "Roboto", sans-serif;
-    --fuente-cuerpo: "Roboto", sans-serif;
-    --weight-bold: 700;
-    --weight-medium: 500;
-    --weight-regular: 400;
-    --weight-light: 300;
+  /* Tipografía */
+  --fuente-encabezados: "Roboto", sans-serif;
+  --fuente-cuerpo: "Roboto", sans-serif;
+  --weight-bold: 700;
+  --weight-medium: 500;
+  --weight-regular: 400;
+  --weight-light: 300;
 }
 
 body {
-    font-family: var(--fuente-cuerpo);
-    font-weight: var(--weight-regular);
-    background: var(--color-fondo);
-    background-image: url("../public/fondo.png");
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+  font-family: var(--fuente-cuerpo);
+  font-weight: var(--weight-regular);
+  background: var(--color-fondo);
+  background-image: url("../public/fondo.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 header {
-    background: linear-gradient(360deg, rgb(100 147 190) 10%, rgb(189 225 243) 35%);
+  background: linear-gradient(360deg, rgb(100 147 190) 10%, rgb(189 225 243) 35%);
 }
 
 .navbar .nav-link:hover {
@@ -36,35 +36,35 @@ header {
 }
 
 p, li, a {
-    font-family: var(--fuente-cuerpo);
-    font-weight: var(--weight-regular);
-    color: var(--color-primario);
-    line-height: 1.5;
+  font-family: var(--fuente-cuerpo);
+  font-weight: var(--weight-regular);
+  color: var(--color-primario);
+  line-height: 1.5;
 }
 
 section {
-    background-color: var(--color-fondo);
-    opacity: 90%;
+  background-color: var(--color-fondo);
+  opacity: 90%;
 }
 
 section h2 {
-    font-family: var(--fuente-encabezados);
-    font-weight: var(--weight-bold);
-    color: var(--color-secundario);
+  font-family: var(--fuente-encabezados);
+  font-weight: var(--weight-bold);
+  color: var(--color-secundario);
 }
 
 .imagenObrasSociales {
-    max-width: 100%;
-    opacity: 90%;
-    border-radius: 1.5rem;
+  max-width: 100%;
+  opacity: 90%;
+  border-radius: 1.5rem;
 }
 
 section h3 {
-    font-family: var(--fuente-encabezados);
-    font-weight: var(--weight-medium);
-    color: var(--color-primario);
-    margin-bottom: 10px;
-    font-size: 1em;
+  font-family: var(--fuente-encabezados);
+  font-weight: var(--weight-medium);
+  color: var(--color-primario);
+  margin-bottom: 10px;
+  font-size: 1em;
 }
 
 .doc {
@@ -73,30 +73,29 @@ section h3 {
 }
 
 footer {
-    font-weight: var(--weight-bold);
+  font-weight: var(--weight-bold);
 }
 
 .container-fluid{
-    flex-direction: column;
+  flex-direction: column;
 }
 
 #navLogin, #navLogout, #linkAltaMedicos {
-    display: none;
+  display: none;
 }
 
 @media(max-width:768px){
+  .navbar-collapse-gradient {
+    background: linear-gradient(360deg, rgb(189 225 243) 10%, rgb(100 147 190) 100%);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 6rem;
+  }
 
-    .navbar-collapse-gradient {
-        background: linear-gradient(360deg, rgb(189 225 243) 10%, rgb(100 147 190) 100%);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        height: 6rem;
-    }
-
-    .nav-item {
-        height: 1.5rem;
-    }
+  .nav-item {
+    height: 1.5rem;
+  }
 }

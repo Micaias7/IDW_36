@@ -9,4 +9,4 @@ export function convertirArchivoABase64(archivo) {
     lector.onerror = (error) => reject(error); // Si hay un error en la lectura, lo captura
     lector.readAsDataURL(archivo); // Lee el archivo como "Data URL" (formato Base64)
   });
-}
+};

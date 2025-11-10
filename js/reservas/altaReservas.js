@@ -41,7 +41,7 @@ function cargarEspecialidades() {
     option.textContent = esp.nombre;
     selectEspecialidad.appendChild(option);
   });
-}
+};
 
 function cargarObrasSociales() {
   obrasSociales.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -54,21 +54,21 @@ function cargarObrasSociales() {
     }
     selectObraSocial.appendChild(option);
   });
-}
+};
 
 // CALCULO
 function actualizarCostoResumen() {
   if (!medicoSeleccionado) {
     resumenCosto.style.display = "none";
     return;
-  }
+  };
 
   const valorConsulta = medicoSeleccionado.valorDeConsulta || 0;
   let os = obraSocialSeleccionada;
 
   if (!os) {
     os = { nombre: "Particular", porcentaje: 0 };
-  }
+  };
 
   const porcentajeDto = os.porcentaje || 0;
   const montoDto = valorConsulta * (porcentajeDto / 100);
