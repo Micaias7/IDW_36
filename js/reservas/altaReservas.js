@@ -43,18 +43,45 @@ function cargarEspecialidades() {
   });
 };
 
-function cargarObrasSociales() {
-  obrasSociales.sort((a, b) => a.nombre.localeCompare(b.nombre));
-  obrasSociales.forEach(os => {
+function cargarObrasSocialesPorMedico(medico) {
+  // Limpiamos el select
+  selectObraSocial.innerHTML = '<option value="" disabled selected>Elija una obra social...</option>';
+
+  // Si el médico no tiene obras sociales, se muestra "Particular"
+  if (!medico || !medico.obrasSociales || medico.obrasSociales.length === 0) {
+    const option = document.createElement("option");
+    option.value = "particular";
+    option.textContent = "Particular (0%)";
+    selectObraSocial.appendChild(option);
+    obraSocialSeleccionada = { nombre: "Particular", porcentaje: 0 };
+    return;
+  }
+
+  // Filtramos las obras sociales disponibles del médico
+  const obrasMedico = obrasSociales.filter(os => medico.obrasSociales.includes(os.id));
+
+  // Si por algún motivo no hay coincidencias, también mostramos "Particular"
+  if (obrasMedico.length === 0) {
+    const option = document.createElement("option");
+    option.value = "particular";
+    option.textContent = "Particular (0%)";
+    selectObraSocial.appendChild(option);
+    obraSocialSeleccionada = { nombre: "Particular", porcentaje: 0 };
+    return;
+  }
+
+  // Ordenamos alfabéticamente y cargamos al select
+  obrasMedico.sort((a, b) => a.nombre.localeCompare(b.nombre));
+  obrasMedico.forEach(os => {
     const option = document.createElement("option");
     option.value = os.id;
     option.textContent = `${os.nombre} (${os.porcentaje}%)`;
-    if (os.porcentaje === 0) {
-        option.selected = true;
-    }
     selectObraSocial.appendChild(option);
   });
-};
+
+  // Seleccionamos la primera por defecto
+  obraSocialSeleccionada = obrasMedico[0];
+}
 
 // CALCULO
 function actualizarCostoResumen() {
@@ -107,7 +134,7 @@ selectEspecialidad.addEventListener("change", (e) => {
   medicosFiltrados.forEach(med => {
     const option = document.createElement("option");
     option.value = med.id;
-    option.textContent = `${med.genero} ${med.nombre} ${med.apellido} ($${med.valorDeConsulta})`;
+    option.textContent = `${med.genero} ${med.nombre} ${med.apellido}`;
     selectMedico.appendChild(option);
   });
 });
@@ -115,6 +142,8 @@ selectEspecialidad.addEventListener("change", (e) => {
 selectMedico.addEventListener("change", (e) => {
   const medicoId = e.target.value;
   medicoSeleccionado = medicos.find(m => m.id == medicoId);
+
+  cargarObrasSocialesPorMedico(medicoSeleccionado);
 
   selectTurno.innerHTML = '<option value="" selected disabled>Elija un horario...</option>';
   selectTurno.disabled = false;
@@ -226,5 +255,4 @@ function mostrarConfirmacion(reserva) {
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarEspecialidades();
-  cargarObrasSociales();
 });

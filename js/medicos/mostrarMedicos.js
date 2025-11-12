@@ -54,7 +54,7 @@ export const actualizarCarruselMovil = () => {
         <img src="${m.imagenFinal || '../public/doctor.png'}" 
             class="doc card-img-top" 
             alt="doctor" 
-            style="height:180px; object-fit:cover; border-radius:10px;">
+            style="height:180px; object-fit:contain; border-radius:10px;">
         <div class="card-body text-center">
           <h5 class="card-title">${m.genero} ${m.nombre} ${m.apellido}</h5>
           <p class="card-text mb-1"><strong>${m.especialidad}</strong></p>
@@ -99,8 +99,7 @@ export const mostrarMedicosEnAlta = () => {
       <td>
         <img src="${m.imagenFinal || '../public/doctor.png'}" 
           alt="foto" 
-          width="60" 
-          class="rounded-circle border">
+          class="foto-medico">
       </td>
       <td>
         <i class="bi bi-pencil-square text-primary" title="Editar" data-id="${m.id}" style="cursor:pointer"></i> |

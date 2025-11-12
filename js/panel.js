@@ -34,6 +34,10 @@ async function cargarSeccion(seccion) {
       archivo = "verReservas.html";
       scriptModulo = "./reservas/mostrarReservas.js";
       break;
+    case "usuarios":
+      archivo = "usuarios.html";
+      scriptModulo = "./mostrarUsuarios.js";
+      break;
     default:
       contenedor.innerHTML = `
         <h2>Bienvenido al Panel de Control</h2>
@@ -85,6 +89,9 @@ async function cargarSeccion(seccion) {
         if (seccion === "reservas" && mod.mostrarReservas) {
           mod.mostrarReservas();
         };
+        if (seccion === "usuarios" && mod.inicializarUsuarios) {
+          mod.inicializarUsuarios();
+        };
       })
       .catch(err => console.error(`Error al cargar módulo de ${seccion}:`, err));
 
@@ -94,8 +101,14 @@ async function cargarSeccion(seccion) {
         Error al cargar la sección: ${error.message}
       </div>
     `;
-  };
-};
+  };};
 
 // Carga inicial
-document.addEventListener("DOMContentLoaded", () => cargarSeccion("medicos"));
+document.addEventListener("DOMContentLoaded", () => {
+  if (!sessionStorage.getItem('token') || sessionStorage.getItem('rol') !== "admin") {
+    alert("Debe loguearse");
+    window.location.href = '../index.html'
+  } else {
+    cargarSeccion("medicos")
+  }
+});

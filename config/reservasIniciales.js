@@ -7,7 +7,7 @@ export const reservasIniciales = [
     turnoId: 1,
     especialidadId: 6,
     obraSocialId: 1,
-    valorTotal: 4900
+    valorTotal: 17500
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const reservasIniciales = [
     turnoId: 2,
     especialidadId: 3,
     obraSocialId: 2,
-    valorTotal: 4900
+    valorTotal: 15000
   },
   {
     id: 3,
@@ -27,6 +27,6 @@ export const reservasIniciales = [
     turnoId: 4,
     especialidadId: 1,
     obraSocialId: 3,
-    valorTotal: 4900
+    valorTotal: 20000
   }
 ];

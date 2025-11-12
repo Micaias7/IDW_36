@@ -84,6 +84,48 @@ footer {
   display: none;
 }
 
+#medicosCarousel .card {
+  height: 100%;
+}
+
+#medicosCarousel .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+#medicosCarousel .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.foto-medico {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: block;
+  margin: 0 auto;
+}
+
+#listaDeMedicos tr {
+  vertical-align: middle;
+  height: 80px;
+}
+
+#listaDeMedico td, #listaDeMedico th {
+  text-align: left;
+  vertical-align: middle;
+  padding: 10px 8px;
+}
+
+select {
+  cursor: pointer;
+}
+
 @media(max-width:768px){
   .navbar-collapse-gradient {
     background: linear-gradient(360deg, rgb(189 225 243) 10%, rgb(100 147 190) 100%);
