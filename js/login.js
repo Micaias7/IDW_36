@@ -23,7 +23,7 @@ formLogin.addEventListener("submit", async function(event){
 
   const usuarioValido = superAdmin || usuarioApi;
   if (!usuarioValido) {
-    return alert("Error en credenciales", "danger");
+    return mostrarMensaje("Error en credenciales", "danger");
   };
 
   const nombreUsuario = superAdmin ? superAdmin.usuario : usuarioApi.username;
@@ -42,7 +42,7 @@ formLogin.addEventListener("submit", async function(event){
   };
 
   if (superAdmin) {
-    const token = btoa(`${nombreUsuario}:${Date.now()}`)
+    const token = btoa(`${nombreUsuario}:${Date.now()}`);
     sessionStorage.setItem("token", token);
     sessionStorage.setItem("rol", "admin");
   };

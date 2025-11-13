@@ -137,6 +137,10 @@ select {
     height: 6rem;
   }
 
+  .panel-link {
+    height: 80px;
+  }
+
   .nav-item {
     height: 1.5rem;
   }
